@@ -21,11 +21,7 @@ namespace AIPO74_HFT_2021221.Models
 
         [MaxLength(100)]
         [Required]
-        public string Name { get; set; }
-
-        [MaxLength(100)]
-        [Required]
-        public string Surname { get; set; }
+        public string FullName { get; set; }
 
         [MaxLength(100)]
         [Required]
@@ -37,9 +33,6 @@ namespace AIPO74_HFT_2021221.Models
 
         [Required]
         public int YearExpirience { get; set; }
-
-        [Required]
-        public int RecomendedPrice { get; set; }
 
         public virtual ICollection<LaboratoryOrders> Orders { get; }
     }

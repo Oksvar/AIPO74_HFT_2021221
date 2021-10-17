@@ -26,15 +26,11 @@ namespace AIPO74_HFT_2021221.Models
 
         [MaxLength(100)]
         [Required]
-        public string Surname { get; set; }
-
-        [MaxLength(100)]
-        [Required]
         public string Address { get; set; }
 
         [MaxLength(20)]
         [Required]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         [MaxLength(100)]
         [Required]
