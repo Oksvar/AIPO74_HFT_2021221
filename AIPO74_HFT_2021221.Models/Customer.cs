@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
-    [Table("LaboratoryStaff")]
-    public class LaboratoryStaff
+    [Table("Cepheus_Customers")]
+   public class Customer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,17 +25,21 @@ namespace AIPO74_HFT_2021221.Models
 
         [MaxLength(100)]
         [Required]
-        public string Position { get; set; }
+        public string Address { get; set; }
 
-        [MaxLength(1)]
+        [MaxLength(100)]
         [Required]
-        public string AccessLevel { get; set; }
+        public string City { get; set; }
 
+        [MaxLength(100)]
         [Required]
-        public int YearExpirience { get; set; }
+        public string Country { get; set; }
 
+        [MaxLength(50)]
         [Required]
-        public int RecomendedPrice { get; set; }
+        public string SecrecyStamp { get; set; }
+
 
     }
 }
+

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Data
 {
-    class UmbrellaDataBaseClass
+   public class UmbrellaDataBaseClass
     {
+
     }
 }
