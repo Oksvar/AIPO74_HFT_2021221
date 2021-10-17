@@ -27,6 +27,10 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string Address { get; set; }
 
+        [MaxLength(20)]
+        [Required]
+        public int Phone { get; set; }
+
         [MaxLength(100)]
         [Required]
         public string City { get; set; }
@@ -39,7 +43,7 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string SecrecyStamp { get; set; }
 
-
+       
     }
 }
 
