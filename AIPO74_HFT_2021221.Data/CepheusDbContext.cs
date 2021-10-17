@@ -65,39 +65,42 @@ namespace AIPO74_HFT_2021221.Data
             ConnectionTable connection4 = new ConnectionTable() { Id = 4, OrderID = orders5.Id, ServeceID = services1.Id };
             ConnectionTable connection5 = new ConnectionTable() { Id = 5, OrderID = orders4.Id, ServeceID = services2.Id };
 
-
-            modelBuilder.Entity<LaboratoryOrders>(entity =>
+            if (modelBuilder != null)
             {
-                      entity.HasOne(LaboratoryOrders => LaboratoryOrders.Scientists)
-                        .WithMany(scientists => scientists.Orders)
-                     .HasForeignKey(LaboratoryOrders => LaboratoryOrders.ScientistID)
-                        .OnDelete(DeleteBehavior.SetNull);
-            });
 
-            modelBuilder.Entity<LaboratoryOrders>(entity =>
-            {
-                entity.HasOne(LaboratoryOrders => LaboratoryOrders.Customers)
+
+                modelBuilder.Entity<LaboratoryOrders>(entity =>
+                {
+                    entity.HasOne(LaboratoryOrders => LaboratoryOrders.Scientists)
                   .WithMany(scientists => scientists.Orders)
-               .HasForeignKey(LaboratoryOrders => LaboratoryOrders.CustomerID)
+               .HasForeignKey(LaboratoryOrders => LaboratoryOrders.ScientistID)
                   .OnDelete(DeleteBehavior.SetNull);
-            });
+                });
 
-            modelBuilder.Entity<ConnectionTable>(entity =>
-            {
-                entity.HasOne(connection => connection.Orders)
-                  .WithMany(orders => orders.ConnectionTables)
-               .HasForeignKey(connection => connection.OrderID)
-                  .OnDelete(DeleteBehavior.SetNull);
-            });
+                modelBuilder.Entity<LaboratoryOrders>(entity =>
+                {
+                    entity.HasOne(LaboratoryOrders => LaboratoryOrders.Customers)
+                      .WithMany(scientists => scientists.Orders)
+                   .HasForeignKey(LaboratoryOrders => LaboratoryOrders.CustomerID)
+                      .OnDelete(DeleteBehavior.SetNull);
+                });
 
-            modelBuilder.Entity<ConnectionTable>(entity =>
-            {
-                entity.HasOne(connection => connection.Services)
-                  .WithMany(service => service.ConnectionTables)
-               .HasForeignKey(connection => connection.ServeceID)
-                  .OnDelete(DeleteBehavior.SetNull);
-            });
+                modelBuilder.Entity<ConnectionTable>(entity =>
+                {
+                    entity.HasOne(connection => connection.Orders)
+                      .WithMany(orders => orders.ConnectionTables)
+                   .HasForeignKey(connection => connection.OrderID)
+                      .OnDelete(DeleteBehavior.SetNull);
+                });
 
+                modelBuilder.Entity<ConnectionTable>(entity =>
+                {
+                    entity.HasOne(connection => connection.Services)
+                      .WithMany(service => service.ConnectionTables)
+                   .HasForeignKey(connection => connection.ServeceID)
+                      .OnDelete(DeleteBehavior.SetNull);
+                });
+            }
             modelBuilder.Entity<Customer>().HasData(customer1, customer2, customer3, customer4, customer5);
             modelBuilder.Entity<LaboratoryStaff>().HasData(staff1, staff2, staff3, staff4, staff5);
             modelBuilder.Entity<Services>().HasData(services1, services2,services3,services4,services5);

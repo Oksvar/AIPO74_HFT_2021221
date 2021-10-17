@@ -34,5 +34,7 @@ namespace AIPO74_HFT_2021221.Models
         public int Dangerous { get; set; }
 
         public virtual ICollection<ConnectionTable> ConnectionTables { get; }
+
+
     }
 }
