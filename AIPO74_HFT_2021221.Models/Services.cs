@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
-   public class Services
+    public class Services
     {
+        public Services()
+        {
+            this.ConnectionTables = new HashSet<ConnectionTable>(); 
+        }
+          
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -27,5 +32,7 @@ namespace AIPO74_HFT_2021221.Models
 
         [Range(1, 10)]
         public int Dangerous { get; set; }
+
+        public virtual ICollection<ConnectionTable> ConnectionTables { get; }
     }
 }
