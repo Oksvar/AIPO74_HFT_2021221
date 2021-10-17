@@ -11,6 +11,10 @@ namespace AIPO74_HFT_2021221.Models
     [Table("LaboratoryStaff")]
     public class LaboratoryStaff
     {
+        public LaboratoryStaff()
+        {
+            this.Orders = new HashSet<LaboratoryOrders>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -37,5 +41,6 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public int RecomendedPrice { get; set; }
 
+        public virtual ICollection<LaboratoryOrders> Orders { get; }
     }
 }
