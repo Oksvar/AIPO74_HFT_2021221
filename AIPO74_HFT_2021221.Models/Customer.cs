@@ -11,6 +11,11 @@ namespace AIPO74_HFT_2021221.Models
     [Table("Cepheus_Customers")]
    public class Customer
     {
+        public Customer()
+        {
+            this.Orders = new HashSet<LaboratoryOrders>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -43,6 +48,8 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string SecrecyStamp { get; set; }
 
+        [NotMapped]
+        public virtual ICollection<LaboratoryOrders> Orders { get; }
        
     }
 }
