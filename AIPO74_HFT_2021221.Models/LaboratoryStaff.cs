@@ -27,7 +27,7 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string Position { get; set; }
 
-        [MaxLength(1)]
+        [Range(1,10)]
         [Required]
         public string AccessLevel { get; set; }
 
