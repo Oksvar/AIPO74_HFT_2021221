@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
-    class BaseModelsClass
+    class LaboratoryStaff
     {
     }
 }
