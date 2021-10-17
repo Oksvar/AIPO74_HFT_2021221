@@ -11,6 +11,10 @@ namespace AIPO74_HFT_2021221.Models
     [Table("Orders")]
    public class LaboratoryOrders
     {
+        public LaboratoryOrders()
+        {
+            this.ConnectionTables = new HashSet<ConnectionTable>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -29,5 +33,7 @@ namespace AIPO74_HFT_2021221.Models
 
         [ForeignKey(nameof(Scientists))]
         public int? ScientistID { get; set; }
+
+        public virtual ICollection<ConnectionTable> ConnectionTables { get; }
     }
 }
