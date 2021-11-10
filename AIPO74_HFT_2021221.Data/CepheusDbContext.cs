@@ -29,7 +29,8 @@ namespace AIPO74_HFT_2021221.Data
         {
             if (optionsBuilder != null && !optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB; Attachdbfilename=|DataDirectory|\Database1.mdf; Integrated security=True; MultipleActiveResultSets=True");
+                optionsBuilder
+                    .UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB; Attachdbfilename=|DataDirectory|\Database1.mdf; Integrated security=True; MultipleActiveResultSets=True");
             }
         }
 
