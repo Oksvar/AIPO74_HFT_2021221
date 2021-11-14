@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Repository
 {
-    interface IRepository
+   public interface IRepository<T>
+        where T : class
     {
+        T GetOne(int id);
+
+        IQueryable<T> GetAll();
+
+        void Insert(T entity);
+
+        void Remove(int id);
     }
 }
