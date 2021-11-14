@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Repository
 {
-    public class ServicesRepo : Repository<Services>
+    public class ServicesRepo : Repository<Services>, IServices
     {
 
         public ServicesRepo(DbContext dbcontext) : base(dbcontext)
         {
 
         }
+
         public void ChangePrice(int id, int newPrice)
         {
             var service = this.GetOne(id);
@@ -42,7 +43,6 @@ namespace AIPO74_HFT_2021221.Repository
             Services obj = this.GetOne(id);
             this.Context.Set<Services>().Remove(obj);
             this.Context.SaveChanges();
-
         }
 
         public void UpdateDangerous(int id, int newDangerous)
@@ -50,5 +50,7 @@ namespace AIPO74_HFT_2021221.Repository
             this.GetOne(id).Dangerous = newDangerous;
             this.Context.SaveChanges();
         }
+
+     
     }
 }
