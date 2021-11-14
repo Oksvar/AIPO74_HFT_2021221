@@ -16,22 +16,32 @@ namespace AIPO74_HFT_2021221.Repository
         }
         public void ChangeDate(int id, DateTime newDate)
         {
-            throw new NotImplementedException();
+            var order = this.GetOne(id);
+            if (order == null)
+            {
+                throw new InvalidOperationException("Cannot find order");
+
+            }
+            order.DateTime = newDate;
+            this.Context.SaveChanges();
         }
 
         public override LaboratoryOrders GetOne(int id)
         {
-            throw new NotImplementedException();
+            return this.GetAll().SingleOrDefault(x => x.Id == id);
         }
 
         public override void Insert(LaboratoryOrders entity)
         {
-            throw new NotImplementedException();
+            this.Context.Set<LaboratoryOrders>().Add(entity);
+            this.Context.SaveChanges();
         }
 
         public override void Remove(int id)
         {
-            throw new NotImplementedException();
+            LaboratoryOrders obj = this.GetOne(id);
+            this.Context.Set<LaboratoryOrders>().Remove(obj);
+            this.Context.SaveChanges();
         }
     }
 }
