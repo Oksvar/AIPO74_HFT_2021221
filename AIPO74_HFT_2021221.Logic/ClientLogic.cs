@@ -87,5 +87,29 @@ namespace AIPO74_HFT_2021221.Logic
                 this.orderRepo.Remove(id);
             }
         }
+        public ConnectionTable InsertNewConnectionTable(int laborderID, int serviceID)
+        {
+            ConnectionTable newConnection = new ConnectionTable()
+            {
+                OrderID = laborderID,
+                ServeceID = serviceID,
+                
+            };
+            this.connectionRepository.Insert(newConnection);
+            return newConnection;
+        }
+
+        public void DeleteConnectionTable(int id)
+        {
+            ConnectionTable connection = this.connectionRepository.GetOne(id);
+            if (connection == null)
+            {
+                throw new InvalidOperationException("Error connection table type");
+            }
+            else
+            {
+                this.connectionRepository.Remove(id);
+            }
+        }
     }
 }
