@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Logic
 {
-    interface IClientLogic
+   public interface IClientLogic
     {
+        void ChangeCustomerAddress(int id, string adress, string city, string Country);
+
+        void ChangeOrderDate(int id, DateTime newDate);
+
+        void ChangeCustomerPhone(int id, string Phone);
     }
 }
