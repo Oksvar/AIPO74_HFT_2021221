@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AIPO74_HFT_2021221.Repository;
-using AIPO74_HFT_2021221.Models;
+
 
 namespace AIPO74_HFT_2021221.Logic
 {
