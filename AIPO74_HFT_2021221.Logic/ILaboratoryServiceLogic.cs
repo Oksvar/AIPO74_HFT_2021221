@@ -17,7 +17,7 @@ namespace AIPO74_HFT_2021221.Logic
 
         IList<Customer> GetAllCustomers();
 
-        void ChangeSErvicePrice(int id, int newPrice);
+        void ChangeAccesslvl(int id, string newAcSlvl);
 
         void ChangeYearExpirience(int id, int yearXP);
 
