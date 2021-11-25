@@ -22,5 +22,6 @@ namespace AIPO74_HFT_2021221.Logic
         void ChangeYearExpirience(int id, int yearXP);
 
         void ChangePosition(int id, string newPosition);
+        IList<CustomerOrderResults> OrderResults();
     }
 }

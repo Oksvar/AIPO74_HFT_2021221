@@ -42,11 +42,11 @@ namespace AIPO74_HFT_2021221.Data
             Services services4 = new Services() { Id = 4, Name = "A cure of Cancer", Price = 100000, Dangerous = 3 };
             Services services5 = new Services() { Id = 5, Name = "Plasma Weapon", Price = 8000, Dangerous = 2 };
 
-            LaboratoryStaff staff1 = new LaboratoryStaff() { Id = 1, FullName = "Bertami Loker", Position = "Microbiologist", AccessLevel = "A", YearExpirience = 5 };
-            LaboratoryStaff staff2 = new LaboratoryStaff() { Id = 2, FullName = "Melisa Hlou", Position = "Virologist", AccessLevel = "B", YearExpirience = 2 };
-            LaboratoryStaff staff3 = new LaboratoryStaff() { Id = 3, FullName = "Anton Volkov", Position = "Technician specialist", AccessLevel = "C", YearExpirience = 3 };
-            LaboratoryStaff staff4 = new LaboratoryStaff() { Id = 4, FullName = "Gustav Claus", Position = "Bacteriologist", AccessLevel = "D", YearExpirience = 5 };
-            LaboratoryStaff staff5 = new LaboratoryStaff() { Id = 5, FullName = "Linda Vagh", Position = "Virologist", AccessLevel = "B", YearExpirience = 4 };
+            LaboratoryStaff staff1 = new LaboratoryStaff() { Id = 1, FullName = "Bertami Loker", Position = "Microbiologist", AccessLevel = "A", YearExpirience = 5, MinPrice = 50000 };
+            LaboratoryStaff staff2 = new LaboratoryStaff() { Id = 2, FullName = "Melisa Hlou", Position = "Virologist", AccessLevel = "B", YearExpirience = 2, MinPrice = 20000 };
+            LaboratoryStaff staff3 = new LaboratoryStaff() { Id = 3, FullName = "Anton Volkov", Position = "Technician specialist", AccessLevel = "C", YearExpirience = 3, MinPrice = 30000 };
+            LaboratoryStaff staff4 = new LaboratoryStaff() { Id = 4, FullName = "Gustav Claus", Position = "Bacteriologist", AccessLevel = "D", YearExpirience = 5, MinPrice = 50000 };
+            LaboratoryStaff staff5 = new LaboratoryStaff() { Id = 5, FullName = "Linda Vagh", Position = "Virologist", AccessLevel = "B", YearExpirience = 4, MinPrice = 40000 };
 
             Customer customer1 = new Customer() { Id = 1, Name = "Poll Woker", Phone = "+17(214)37-41-42", Address = "45 Creekside Ave", City = "Los-Angeles", Country = "USA", SecrecyStamp = "Medium level" };
             Customer customer2 = new Customer() { Id = 2, Name = "Jeremi Matos", Phone = "+3(630)187-42-60", Address = "97 Helen St.", City = "Budapest", Country = "Hungary", SecrecyStamp = "Low level" };

@@ -73,13 +73,14 @@ namespace AIPO74_HFT_2021221.Logic
             return this.OrderRepo.GetOne(id);
         }
 
-        public LaboratoryStaff InsertNewStaff(string name, string position, string AccessLevel, int YearExpirience)
+        public LaboratoryStaff InsertNewStaff(string name, string position, string AccessLevel, int YearExpirience, int minPrice)
         {
             LaboratoryStaff newlaboratoryStaff = new LaboratoryStaff()
             {
                 FullName = name,
                 Position = position,
                 AccessLevel = AccessLevel,
+                MinPrice = minPrice,
                 YearExpirience = YearExpirience,
             };
             this.LaboratoryStaffRepo.Insert(newlaboratoryStaff);
@@ -124,6 +125,70 @@ namespace AIPO74_HFT_2021221.Logic
                 this.ServicesRepo.Remove(id);
             }
         }
+        public IList<CustomerOrderResults> OrderResults()
+        {
+            IList<LaboratoryOrders> laboratoryOrders = this.OrderRepo.GetAll().ToList();
+            IList<LaboratoryStaff> laboratoryStaffs = this.LaboratoryStaffRepo.GetAll().ToList();
+            IList<Services> services = this.ServicesRepo.GetAll().ToList();
+            IList<ConnectionTable> connections = this.ConnectionRepository.GetAll().ToList();
+            IList<Customer> customers = this.CustomerRepo.GetAll().ToList();
 
+            var rest = from customer in customers
+                       join orders in from order in from order in from orders in laboratoryOrders
+                                                                  join servicess in from conn in connections
+                                                                                    join serv in services
+                                                                                    on conn.ServeceID equals serv.Id
+                                                                                    select new
+                                                                                    {
+                                                                                        ConnnectorID = conn.Id,
+                                                                                        OrderID = conn.OrderID,
+                                                                                        ServicePrice = serv.Price,
+                                                                                    }
+                                                                               on orders.Id equals servicess.OrderID
+                                                                  group servicess by servicess.OrderID into order
+                                                                  select new
+                                                                  {
+                                                                      OrderID = order.Key,
+                                                                      TotalPrice = order.Sum(x => x.ServicePrice),
+                                                                  }
+                                                    join cust in laboratoryOrders
+                                                    on order.OrderID equals cust.Id
+                                                    select new
+                                                    {
+                                                        CustomerID = cust.CustomerID,
+                                                        order.OrderID,
+                                                        order.TotalPrice,
+                                                    }
+                                      join scien in from order in laboratoryOrders
+                                                    join scien in laboratoryStaffs
+
+                                                    on order.CustomerID equals scien.Id
+                                                    select new
+                                                    {
+                                                        orderID = order.Id,
+                                                        WorkPrice = scien.MinPrice,
+                                                    }
+                                      on order.OrderID equals scien.orderID
+                                      select new
+                                      {
+                                          order.OrderID,
+                                          order.CustomerID,
+                                          TotalPrice = order.TotalPrice + scien.WorkPrice,
+
+                                      }
+                                    on customer.Id equals orders.CustomerID
+                       group orders by orders.CustomerID.Value into prices
+                       let total = prices.Sum(x => x.TotalPrice)
+                       orderby total descending
+                       select new CustomerOrderResults()
+                       {
+                           CustomerID = prices.Key,
+                           CustomreName = this.CustomerRepo.GetOne(prices.Key).Name,
+                           TotalAmount = total,
+                       };
+            return rest.ToList();
+
+                                                                        
+        }
     }
 }
