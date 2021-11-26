@@ -14,22 +14,17 @@ namespace AIPO74_HFT_2021221.Repository
         {
 
         }
+
         public override ConnectionTable GetOne(int id)
         {
-            return this.GetAll().SingleOrDefault(x => x.Id == id);
-        }
-
-        public override void Insert(ConnectionTable entity)
-        {
-            this.Context.Set<ConnectionTable>().Add(entity);
-            this.Context.SaveChanges();
+            return GetAll().SingleOrDefault(x => x.Id == id);
         }
 
         public override void Remove(int id)
         {
-            ConnectionTable obj = this.GetOne(id);
-            this.Context.Set<ConnectionTable>().Remove(obj);
-            this.Context.SaveChanges();
+            ConnectionTable table = GetOne(id);
+            context.Set<ConnectionTable>().Remove(table);
+            context.SaveChanges();
         }
     }
 }

@@ -12,6 +12,5 @@ namespace AIPO74_HFT_2021221.Repository
         void ChangePosition(int id, string newPosition);
 
         void ChangeAccessLevel(int id, string newAccesslevel);
-        void ChangeYearExpirience(int id, int newYearExpirience);
     }
 }

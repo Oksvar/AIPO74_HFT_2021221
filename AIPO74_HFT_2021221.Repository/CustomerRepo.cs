@@ -15,57 +15,37 @@ namespace AIPO74_HFT_2021221.Repository
 
         }
 
-        public void ChangeAddress(int id, string newCity, string newAddress, string newCountry)
+        public void ChangeAddress(int id, string newAddress)
         {
-            var customer = this.GetOne(id);
-            if (customer == null)
-            {
-                throw new InvalidOperationException("Cannot find customer");
-            }
-            customer.City = newCity;
+            Customer customer = GetOne(id);
             customer.Address = newAddress;
-            this.Context.SaveChanges();
+            context.SaveChanges();
         }
 
         public void ChangePhone(int id, string phone)
         {
-            var customer = this.GetOne(id);
-            if (customer == null)
-            {
-                throw new InvalidOperationException("Cannot find customer");
-            }
+            Customer customer = GetOne(id);
             customer.Phone = phone;
-            this.Context.SaveChanges();
+            context.SaveChanges();
         }
 
         public void ChangeSecrecyStamp(int id, string newSecrecyStamp)
         {
-            var customer = this.GetOne(id);
-            if (customer == null)
-            {
-                throw new InvalidOperationException("Cannot find customer");
-
-            }
+            Customer customer = GetOne(id);
             customer.SecrecyStamp = newSecrecyStamp;
-            this.Context.SaveChanges();
+            context.SaveChanges();
         }
 
         public override Customer GetOne(int id)
         {
-            return this.GetAll().SingleOrDefault(x => x.Id == id);
-        }
-
-        public override void Insert(Customer entity)
-        {
-            this.Context.Set<Customer>().Add(entity);
-            this.Context.SaveChanges();
+            return GetAll().SingleOrDefault(x => x.Id == id);
         }
 
         public override void Remove(int id)
         {
-            Customer obj = this.GetOne(id);
-            this.Context.Set<Customer>().Remove(obj);
-            this.Context.SaveChanges();
+            Customer customer = GetOne(id);
+            context.Set<Customer>().Remove(customer);
+            context.SaveChanges();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace AIPO74_HFT_2021221.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private DbContext context;
+        protected readonly DbContext context;
         public Repository(DbContext context)
         {
             this.context = context;
@@ -18,16 +18,23 @@ namespace AIPO74_HFT_2021221.Repository
         {
             return this.context.Set<T>();
         }
-
-        protected DbContext Context { get => this.context; set => this.context = value; }
-
         public abstract T GetOne(int id);
 
 
-        public abstract void Insert(T entity);
+        public  void Insert(T entity)
+        {
+            context.Set<T>().Attach(entity);
+            context.SaveChanges();
+        }
 
 
         public abstract void Remove(int id);
+
+        public void Add(T entity)
+        {
+            context.Set<T>().Add(entity);
+            context.SaveChanges();
+        }
        
     }
 }

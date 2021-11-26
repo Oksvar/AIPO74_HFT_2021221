@@ -19,59 +19,26 @@ namespace AIPO74_HFT_2021221.Test
         private Mock<IServices> serviceRepo;
         private Mock<IConnectionRepository> connectRepo;
         private Mock<ILaboratoryStaffRepo> staffRepo;
-        LaboratoryServiceLogic LaboratoryServiceLogic;
-        ClientLogic ClientLogic;
-        ContentLogic content;
-        private List<CustomerOrderResults> customerOrderResults;
+       
 
 
-
-        [Test]
-        public void FirstTestOderTest()
-        {
-            var orderResult = this.LaboratoryServiceLogic.OrderResults();
-
-            Assert.That(orderResult, Is.EquivalentTo(this.customerOrderResults));
-
-            this.customerRepo.Verify(repo => repo.GetAll(), Times.Once);
-            this.LabOrderRepo.Verify(repo => repo.GetAll(), Times.Once);
-            this.serviceRepo.Verify(repo => repo.GetAll(), Times.Once);
-            this.connectRepo.Verify(repo => repo.GetAll(), Times.Once);
-            this.staffRepo.Verify(repo => repo.GetAll(), Times.Once);
-        }
-        #region
-        [Test]
-        public void GetAllCustomerTest()
-        {
-            var testemp = LaboratoryServiceLogic.GetAllCustomers();
-            Assert.That(LaboratoryServiceLogic.GetAllCustomers().Count() > 0, Is.True);
-        }
-
-        public void GetAllOrdersTest()
-        {
-            var testmap = LaboratoryServiceLogic.GetAllOrders();
-            Assert.That(LaboratoryServiceLogic.GetAllOrders().Count() > 0, Is.True);
-        }
-        
-        public void GetAllservicesTest()
-        {
-            var testmap = content.getAllServices();
-            Assert.That(content.getAllServices().Count() > 0, Is.True);
-        }
+       
+        #region CRUD
+         
         #endregion
 
 
-        [Test]
+       
         public void ThirdTest()
         {
 
         }
-        [Test]
+        
         public void fourthTest()
         {
 
         }
-        [Test]
+       
         public void fifthTest()
         {
 

@@ -17,7 +17,6 @@ namespace AIPO74_HFT_2021221.Models
           
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public int Id { get; set; }
 
         [MaxLength(100)]
@@ -32,7 +31,7 @@ namespace AIPO74_HFT_2021221.Models
 
         [Range(1, 10)]
         public int Dangerous { get; set; }
-
+        [NotMapped]
         public virtual ICollection<ConnectionTable> ConnectionTables { get; }
 
 

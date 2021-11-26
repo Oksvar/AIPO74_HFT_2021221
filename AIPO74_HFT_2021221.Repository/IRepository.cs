@@ -16,5 +16,6 @@ namespace AIPO74_HFT_2021221.Repository
         void Insert(T entity);
 
         void Remove(int id);
+        void Add(T entity);
     }
 }

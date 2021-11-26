@@ -1,18 +1,21 @@
-﻿using AIPO74_HFT_2021221.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AIPO74_HFT_2021221.Models;
 
-namespace AIPO74_HFT_2021221.Repository
+namespace AIPO74_HFT_2021221.Logic
 {
-   public interface ICustomerRepo : IRepository<Customer>
+   public interface ICustomerLogic
     {
         void ChangeAddress(int id, string newAddress);
 
         void ChangePhone(int id, string phone);
 
         void ChangeSecrecyStamp(int id, string newSecrecyStamp);
+
+        IEnumerable<Customer> GetCustomers();
+        Customer GetCustomerID(int id);
     }
 }

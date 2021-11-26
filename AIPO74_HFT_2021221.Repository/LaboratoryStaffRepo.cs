@@ -14,55 +14,31 @@ namespace AIPO74_HFT_2021221.Repository
         {
 
         }
+
         public void ChangeAccessLevel(int id, string newAccesslevel)
         {
-            var Scientist = this.GetOne(id);
-            if (Scientist == null)
-            {
-                throw new InvalidOperationException("Cannot find Scientist");
-            }
-            Scientist.AccessLevel = newAccesslevel;
-            this.Context.SaveChanges();
+            LaboratoryStaff staff = GetOne(id);
+            staff.AccessLevel = newAccesslevel;
+            context.SaveChanges();
         }
 
         public void ChangePosition(int id, string newPosition)
         {
-            var Scientist = this.GetOne(id);
-            if (Scientist == null)
-            {
-                throw new InvalidOperationException("Cannot find Scientist");
-            }
-            Scientist.Position = newPosition;
-            this.Context.SaveChanges();
-        }
-
-        public void ChangeYearExpirience(int id, int newYearExpirience)
-        {
-            var Scientist = this.GetOne(id);
-            if (Scientist == null)
-            {
-                throw new InvalidOperationException("Cannot find Scientist");
-            }
-            Scientist.YearExpirience = newYearExpirience;
-            this.Context.SaveChanges();
+            LaboratoryStaff staff = GetOne(id);
+            staff.Position = newPosition;
+            context.SaveChanges();
         }
 
         public override LaboratoryStaff GetOne(int id)
         {
-            return this.GetAll().SingleOrDefault(x => x.Id == id);
-        }
-
-        public override void Insert(LaboratoryStaff entity)
-        {
-            this.Context.Set<LaboratoryStaff>().Add(entity);
-            this.Context.SaveChanges();
+            return GetAll().SingleOrDefault(x => x.Id == id);
         }
 
         public override void Remove(int id)
         {
-            LaboratoryStaff obj = this.GetOne(id);
-            this.Context.Set<LaboratoryStaff>().Remove(obj);
-            this.Context.SaveChanges();
+            LaboratoryStaff staff = GetOne(id);
+            context.Set<LaboratoryStaff>().Remove(staff);
+            context.SaveChanges();
         }
     }
 }
