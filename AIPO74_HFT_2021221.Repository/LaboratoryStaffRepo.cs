@@ -31,7 +31,7 @@ namespace AIPO74_HFT_2021221.Repository
 
         public override LaboratoryStaff GetOne(int id)
         {
-            return GetAll().SingleOrDefault(x => x.Id == id);
+            return GetAll().SingleOrDefault(x => x.StaffID == id);
         }
 
         public override void Remove(int id)

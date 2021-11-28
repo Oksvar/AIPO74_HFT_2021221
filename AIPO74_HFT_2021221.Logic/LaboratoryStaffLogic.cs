@@ -27,7 +27,7 @@ namespace AIPO74_HFT_2021221.Logic
 
         public void CreateNewStaff(LaboratoryStaff laboratoryStaff)
         {
-            if (laboratoryStaff1.GetOne(laboratoryStaff.Id) !=null)
+            if (laboratoryStaff1.GetOne(laboratoryStaff.StaffID) !=null)
             {
                 throw new InvalidOperationException("ERROR: thre is already staff with tihs ID");
             }

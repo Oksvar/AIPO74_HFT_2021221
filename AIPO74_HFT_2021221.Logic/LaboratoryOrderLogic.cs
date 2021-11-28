@@ -27,7 +27,7 @@ namespace AIPO74_HFT_2021221.Logic
             {
                 throw new InvalidOperationException("Error: ERROR: This service already in database");
             }
-            else if(laboratoryOrders.Customers == null || laboratoryOrders.Scientists ==null)
+            else if(laboratoryOrders.CustomerID == null || laboratoryOrders.ServiceId ==null)
             {
                 throw new InvalidOperationException("Error: Some ");
             }

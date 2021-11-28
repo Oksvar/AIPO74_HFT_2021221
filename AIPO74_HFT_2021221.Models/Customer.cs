@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
-    [Table("Cepheus_Customers")]
+    [Table("Customers")]
    public class Customer
     {
         public Customer()
@@ -18,7 +18,7 @@ namespace AIPO74_HFT_2021221.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int CustomerID { get; set; }
 
         [MaxLength(100)]
         [Required]
@@ -46,7 +46,12 @@ namespace AIPO74_HFT_2021221.Models
 
         [NotMapped]
         public virtual ICollection<LaboratoryOrders> Orders { get; }
-       
+
+        public override string ToString()
+        {
+            return $"Custumer ID:{this.CustomerID} Name: {this.Name} Adress: {Address} Phone: {Phone} City: {City} Country: {Country} Secret Stamp: {this.SecrecyStamp}";
+        }
+
     }
 }
 

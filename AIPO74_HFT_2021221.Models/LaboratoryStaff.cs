@@ -13,11 +13,11 @@ namespace AIPO74_HFT_2021221.Models
     {
         public LaboratoryStaff()
         {
-            this.Orders = new HashSet<LaboratoryOrders>();
+            OrdersServices = new HashSet<LaboratoryOrders>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int StaffID { get; set; }
 
         [MaxLength(100)]
         [Required]
@@ -29,14 +29,16 @@ namespace AIPO74_HFT_2021221.Models
 
         [Range(1, 10)]
         [Required]
-        public string AccessLevel { get; set; }
-
-        [Required]
-        public int MinPrice { get; set; }
+        public string AccessLevel { get; set; }   
 
         [Required]
         public int YearExpirience { get; set; }
 
-        public virtual ICollection<LaboratoryOrders> Orders { get; }
+        public virtual ICollection<LaboratoryOrders> OrdersServices { get; }
+
+        public override string ToString()
+        {
+            return $"ID: {this.StaffID} Full Name: {this.FullName} Position: {this.Position} Access level: {this.AccessLevel} Year Expirience: {this.YearExpirience}";
+        }
     }
 }

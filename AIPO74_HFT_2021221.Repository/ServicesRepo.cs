@@ -28,7 +28,7 @@ namespace AIPO74_HFT_2021221.Repository
 
         public override Services GetOne(int id)
         {
-            return GetAll().SingleOrDefault(x => x.Id == id);
+            return GetAll().SingleOrDefault(x => x.ServiceId == id);
         }
 
         public override void Remove(int id)

@@ -18,7 +18,7 @@ namespace AIPO74_HFT_2021221.Repository
         public void ChangeDate(int id, DateTime newDate)
         {
             LaboratoryOrders orders = GetOne(id);
-            orders.DateTime = newDate;
+            orders.Date = newDate;
             context.SaveChanges();
         }
 

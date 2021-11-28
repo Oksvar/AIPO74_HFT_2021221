@@ -22,7 +22,7 @@ namespace AIPO74_HFT_2021221.Logic
 
         public void CreateService(Services services)
         {
-            if (services1.GetOne(services.Id) != null)
+            if (services1.GetOne(services.ServiceId) != null)
             {
                 throw new InvalidOperationException("ERROR: This service already in database ");
             }

@@ -14,17 +14,31 @@ namespace AIPO74_HFT_2021221.Test
     [TestFixture]
     public class LabServiceLogicTests
     {
-        private Mock<ICustomerRepo> customerRepo;
-        private Mock<ILaboratoryOrderRepo> LabOrderRepo;
-        private Mock<IServices> serviceRepo;
-        private Mock<IConnectionRepository> connectRepo;
-        private Mock<ILaboratoryStaffRepo> staffRepo;
-       
+        IServices servicesRepo;
+        ILaboratoryStaffRepo staffRepo;
+        ILaboratoryOrderRepo orderRepo;
+        ICustomerRepo customerRepo;
+        LaboratoryStaffLogic staffLogic;
+        CustomerLogic CustomerLogic;
+        IServiceLogic serviceLogic;
+
 
 
        
         #region CRUD
-         
+         [Test]
+         public void GetServiceId()
+        {
+            var staff = serviceLogic.GetServicesID(1);
+            Assert.That(staff.Name, Is.EqualTo("Biological Weapon"));
+        }
+        [Test]
+        public void GetCustumerID()
+        {
+            var cust = CustomerLogic.GetCustomers();
+            Assert.That(CustomerLogic.GetCustomers().Count() > 0, Is.True);
+
+        }
         #endregion
 
 
