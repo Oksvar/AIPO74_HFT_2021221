@@ -26,6 +26,23 @@ namespace AIPO74_HFT_2021221.Logic
             customerRepo.ChangeSecrecyStamp(id, newSecrecyStamp);
         }
 
+        public void CreateCustomer(Customer customer)
+        {
+            if (customerRepo.GetOne(customer.CustomerID) !=null)
+            {
+                throw new InvalidOperationException("ERROR: This id alredy have in request ");
+            }
+            else if(customer.Name == null)
+            {
+                throw new InvalidOperationException("ERROR: You missed up something  ");
+            }
+            customerRepo.Add(customer);
+        }
+        public void DeleteCustomer(int id)
+        {
+            customerRepo.Remove(id);
+        }
+
         public Customer GetCustomerID(int id)
         {
             return customerRepo.GetOne(id);

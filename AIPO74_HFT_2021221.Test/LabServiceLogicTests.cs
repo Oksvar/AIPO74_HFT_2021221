@@ -21,6 +21,7 @@ namespace AIPO74_HFT_2021221.Test
         LaboratoryStaffLogic staffLogic;
         CustomerLogic CustomerLogic;
         IServiceLogic serviceLogic;
+        LaboratoryOrderLogic orderLogic;
 
 
 
@@ -33,26 +34,26 @@ namespace AIPO74_HFT_2021221.Test
             Assert.That(staff.Name, Is.EqualTo("Biological Weapon"));
         }
         [Test]
-        public void GetCustumerID()
+        public void GetOrderID()
         {
-            var cust = CustomerLogic.GetCustomers();
-            Assert.That(CustomerLogic.GetCustomers().Count() > 0, Is.True);
+            var ord = orderLogic.GetLaboratoryOrders();
+            Assert.That(orderLogic.GetLaboratoryOrders().Count() > 0, Is.True);
 
         }
         #endregion
 
 
-       
+       [Test]
         public void ThirdTest()
         {
 
         }
-        
+        [Test]
         public void fourthTest()
         {
 
         }
-       
+       [Test]
         public void fifthTest()
         {
 

@@ -17,5 +17,8 @@ namespace AIPO74_HFT_2021221.Logic
 
         IEnumerable<Customer> GetCustomers();
         Customer GetCustomerID(int id);
+
+        void CreateCustomer(Customer customer);
+        void DeleteCustomer(int id);
     }
 }

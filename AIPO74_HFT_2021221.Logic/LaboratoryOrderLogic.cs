@@ -36,17 +36,17 @@ namespace AIPO74_HFT_2021221.Logic
 
         public void DeleteOrder(int id)
         {
-            throw new NotImplementedException();
+            orderRepo.Remove(id);
         }
 
         public LaboratoryOrders GetLaboratoryOrder(int id)
         {
-            throw new NotImplementedException();
+            return orderRepo.GetOne(id);
         }
 
         public IEnumerable<LaboratoryOrders> GetLaboratoryOrders()
         {
-            throw new NotImplementedException();
+            return orderRepo.GetAll();
         }
     }
 }
