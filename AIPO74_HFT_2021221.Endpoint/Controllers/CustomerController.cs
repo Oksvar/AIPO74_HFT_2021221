@@ -19,10 +19,30 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             this.customerLogic = customerLogic;
         }
-        [HttpGet ("{id}")]
+        [HttpGet ("{BYID}")]
         public Customer GetCustomer(int id)
         {
             return customerLogic.GetCustomerID(id);
+        }
+        [HttpGet]
+        public IEnumerable<Customer> GetCustomers()
+        {
+            return customerLogic.GetCustomers();
+        }
+        [HttpPut]
+        public void UpdateCustomer([FromBody] Customer customer)
+        {
+            customerLogic.ChangeAddress(customer.CustomerID, customer.Address);
+        }
+        [HttpPost]
+        public void CreateCustomer([FromBody] Customer customer)
+        {
+            customerLogic.CreateCustomer(customer);
+        }
+        [HttpDelete("BYID")]
+        public void DeleteCustomer(int id)
+        {
+            customerLogic.DeleteCustomer(id);
         }
 
      
