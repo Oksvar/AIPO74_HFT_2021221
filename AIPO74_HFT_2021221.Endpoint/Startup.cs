@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AIPO74_HFT_2021221.Data;
+using AIPO74_HFT_2021221.Logic;
+using AIPO74_HFT_2021221.Repository;
 
 namespace AIPO74_HFT_2021221.Endpoint
 {
@@ -16,11 +19,25 @@ namespace AIPO74_HFT_2021221.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddTransient<IServiceLogic, ServiceLogic>();
+            services.AddTransient<ILaboratoryStaff, LaboratoryStaffLogic>();
+            services.AddTransient<ILaboratoryOrderLogic, LaboratoryOrderLogic>();
+            services.AddTransient<ICustomerLogic, CustomerLogic>();
+
+            services.AddTransient<IServices, ServicesRepo>();
+            services.AddTransient<ILaboratoryOrderRepo, LaboratoryOrderRepo>();
+            services.AddTransient<ILaboratoryStaffRepo, LaboratoryStaffRepo>();
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
+
+            services.AddTransient<CepheusDbContext, CepheusDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -28,13 +45,8 @@ namespace AIPO74_HFT_2021221.Endpoint
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseEndpoints(endpoint => { endpoint.MapControllers(); });
         }
+       
     }
 }
