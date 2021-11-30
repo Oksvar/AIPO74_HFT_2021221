@@ -12,7 +12,7 @@ namespace AIPO74_HFT_2021221.Data
     { 
         public CepheusDbContext()
         {
-            this.Database.EnsureCreated();
+            this.Database?.EnsureCreated();
         }
         public CepheusDbContext(DbContextOptions<CepheusDbContext> options) : base(options)
         {
@@ -29,16 +29,25 @@ namespace AIPO74_HFT_2021221.Data
         {
             if (optionsBuilder != null && !optionsBuilder.IsConfigured)
             {
-                optionsBuilder
-                    .UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\Database1.mdf; Integrated security=True; MultipleActiveResultSets=True");
+                string connstring = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\Database1.mdf; Integrated security=True; MultipleActiveResultSets=True";
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(connstring);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<LaboratoryOrders>()
+                .HasKey(br => new { br.ServiceId, br.StaffID, br.CustomerID });
+            modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.Services).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.ServiceId);
+            modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.LaboratoryStaff).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.StaffID);
+            modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.Customers).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.CustomerID);
+           
+
+
+
             List<Services> servicesList = new List<Services>
             {
-                new Services{ServiceId = 1, Name = "Biological Weapon", Price = 80000, Dangerous = 8, DevelopmentTime = 6 },
+                new Services {  ServiceId = 1, Name = "Biological Weapon", Price = 80000, Dangerous = 8, DevelopmentTime = 6 },
                 new Services { ServiceId = 2, Name = "New Bacteria", Price = 20000, Dangerous = 2, DevelopmentTime = 5 },
                 new Services { ServiceId = 3, Name = "Virus weapom", Price = 900000, Dangerous = 10, DevelopmentTime = 4 },
                 new Services { ServiceId = 4, Name = "A cure of Cancer", Price = 100000, Dangerous = 3, DevelopmentTime = 3 },
@@ -75,6 +84,8 @@ namespace AIPO74_HFT_2021221.Data
                
                
             };
+
+
   
             
             modelBuilder.Entity<Customer>().HasData(customersList);

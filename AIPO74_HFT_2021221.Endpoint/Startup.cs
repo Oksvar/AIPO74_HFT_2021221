@@ -30,7 +30,7 @@ namespace AIPO74_HFT_2021221.Endpoint
             services.AddTransient<ILaboratoryStaffRepo, LaboratoryStaffRepo>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
 
-            services.AddTransient<CepheusDbContext, CepheusDbContext>();
+            services.AddDbContext<CepheusDbContext, CepheusDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

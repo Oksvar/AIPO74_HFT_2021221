@@ -10,6 +10,7 @@ namespace AIPO74_HFT_2021221.Repository
    public interface IServices : IRepository<Services>
     {
         void ChangePrice(int id, int newPrice);
+        void ChangeName(int id, string newName);
 
         void UpdateDangerous(int id, int newDangerous);
     }

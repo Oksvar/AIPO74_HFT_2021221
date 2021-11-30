@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {
-    [Route("[Controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ServicesController : ControllerBase
     {

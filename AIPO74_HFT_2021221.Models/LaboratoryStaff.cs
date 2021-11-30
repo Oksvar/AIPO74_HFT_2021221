@@ -13,8 +13,9 @@ namespace AIPO74_HFT_2021221.Models
     {
         public LaboratoryStaff()
         {
-            OrdersServices = new HashSet<LaboratoryOrders>();
+            LaboratoryOrders = new HashSet<LaboratoryOrders>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StaffID { get; set; }
@@ -34,7 +35,8 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public int YearExpirience { get; set; }
 
-        public virtual ICollection<LaboratoryOrders> OrdersServices { get; }
+        public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }
+
 
         public override string ToString()
         {

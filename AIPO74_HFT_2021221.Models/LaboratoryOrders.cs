@@ -11,6 +11,7 @@ namespace AIPO74_HFT_2021221.Models
     [Table("Orders")]
     public class LaboratoryOrders
     {
+       
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,11 +21,18 @@ namespace AIPO74_HFT_2021221.Models
         public DateTime Date { get; set; }
 
         [ForeignKey("Customers")]
-        public int? CustomerID { get; set; }
+        public int CustomerID { get; set; }
         [ForeignKey("LaboratoryStaff")]
-        public int? StaffID { get; set; }
+        public int StaffID { get; set; }
         [ForeignKey("Services")]
-        public int? ServiceId { get; set; }
+        public int ServiceId { get; set; }
+
+        [NotMapped]
+        public virtual Services Services { get; }
+        [NotMapped]
+        public virtual LaboratoryStaff LaboratoryStaff { get; }
+        [NotMapped]
+        public virtual Customer Customers { get; }
         public override string ToString()
         {
             return $"ID: {Id} Date: {Date} Customer ID: {CustomerID} Personal ID: {StaffID} Service ID: {ServiceId}";

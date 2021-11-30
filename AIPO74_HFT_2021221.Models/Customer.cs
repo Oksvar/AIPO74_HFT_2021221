@@ -13,7 +13,7 @@ namespace AIPO74_HFT_2021221.Models
     {
         public Customer()
         {
-            this.Orders = new HashSet<LaboratoryOrders>();
+            LaboratoryOrders = new HashSet<LaboratoryOrders>();
         }
 
         [Key]
@@ -44,8 +44,8 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string SecrecyStamp { get; set; }
 
-        [NotMapped]
-        public virtual ICollection<LaboratoryOrders> Orders { get; }
+        public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }
+
 
         public override string ToString()
         {

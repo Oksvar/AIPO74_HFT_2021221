@@ -9,7 +9,7 @@ using AIPO74_HFT_2021221.Models;
 
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {
-    [Route("[Controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LaboratoryOrderController : ControllerBase
     {

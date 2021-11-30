@@ -10,7 +10,11 @@ namespace AIPO74_HFT_2021221.Logic
 {
     public class CustomerLogic : ICustomerLogic
     {
-        private readonly CustomerRepo customerRepo;
+        private readonly ICustomerRepo customerRepo;
+        public CustomerLogic(ICustomerRepo customerRepo)
+        {
+            this.customerRepo = customerRepo;
+        }
         public void ChangeAddress(int id, string newAddress)
         {
             customerRepo.ChangeAddress(id, newAddress);

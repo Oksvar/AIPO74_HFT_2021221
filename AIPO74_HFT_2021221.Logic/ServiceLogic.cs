@@ -10,14 +10,14 @@ namespace AIPO74_HFT_2021221.Logic
 {
     public class ServiceLogic : IServiceLogic
     {
-        private readonly IServices services1;
+        IServices services1;
         public ServiceLogic(IServices serviceLogic)
         {
             this.services1 = serviceLogic;
         }
         public void ChangeServiceName(int id, string newServName)
         {
-            throw new NotImplementedException();
+            services1.ChangeName(id, newServName);
         }
 
         public void CreateService(Services services)
