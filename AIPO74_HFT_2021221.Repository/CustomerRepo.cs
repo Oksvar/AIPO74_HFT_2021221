@@ -1,4 +1,5 @@
-﻿using AIPO74_HFT_2021221.Models;
+﻿using AIPO74_HFT_2021221.Data;
+using AIPO74_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace AIPO74_HFT_2021221.Repository
 {
   public  class CustomerRepo : Repository<Customer>, ICustomerRepo
     {
-        public CustomerRepo(DbContext context) : base(context)
+        public CustomerRepo(CepheusDbContext context) : base(context)
         {
 
         }

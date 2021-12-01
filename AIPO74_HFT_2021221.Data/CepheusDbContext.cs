@@ -10,6 +10,10 @@ namespace AIPO74_HFT_2021221.Data
 {
     public class CepheusDbContext : DbContext
     { 
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<LaboratoryStaff> Staffs { get; set; }
+        public virtual DbSet<Services> Services { get; set; }
+        public virtual DbSet<LaboratoryOrders> Orders { get; set; }
         public CepheusDbContext()
         {
             this.Database?.EnsureCreated();
@@ -18,12 +22,6 @@ namespace AIPO74_HFT_2021221.Data
         {
             this.Database?.EnsureCreated();
         }
-
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<LaboratoryStaff> Staffs { get; set; }
-        public virtual DbSet<Services> Services { get; set; }
-        public virtual DbSet<LaboratoryOrders> Orders { get; set; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

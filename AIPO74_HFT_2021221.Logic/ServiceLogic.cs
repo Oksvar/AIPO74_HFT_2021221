@@ -10,19 +10,19 @@ namespace AIPO74_HFT_2021221.Logic
 {
     public class ServiceLogic : IServiceLogic
     {
-        IServices services1;
-        public ServiceLogic(IServices serviceLogic)
+        IServices servicesRepo;
+        public ServiceLogic(IServices serviceRepo)
         {
-            this.services1 = serviceLogic;
+            servicesRepo = serviceRepo;
         }
         public void ChangeServiceName(int id, string newServName)
         {
-            services1.ChangeName(id, newServName);
+            servicesRepo.ChangeName(id, newServName);
         }
 
         public void CreateService(Services services)
         {
-            if (services1.GetOne(services.ServiceId) != null)
+            if (servicesRepo.GetOne(services.ServiceId) != null)
             {
                 throw new InvalidOperationException("ERROR: This service already in database ");
             }
@@ -30,22 +30,22 @@ namespace AIPO74_HFT_2021221.Logic
             {
                 throw new InvalidOperationException("ERROR: Some fields are not filled ");
             }
-            services1.Add(services);
+            servicesRepo.Add(services);
         }
 
         public void DeleteService(int id)
         {
-            services1.Remove(id);
+            servicesRepo.Remove(id);
         }
 
         public IEnumerable<Services> GetServices()
         {
-            return services1.GetAll();
+            return servicesRepo.GetAll();
         }
 
         public Services GetServicesID(int id)
         {
-            return services1.GetOne(id);
+            return servicesRepo.GetOne(id);
         }
     }
 }

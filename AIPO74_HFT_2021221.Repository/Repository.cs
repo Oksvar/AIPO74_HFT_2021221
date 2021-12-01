@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AIPO74_HFT_2021221.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,14 @@ namespace AIPO74_HFT_2021221.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DbContext context;
-        public Repository(DbContext context)
+        protected readonly CepheusDbContext context;
+        public Repository(CepheusDbContext context)
         {
             this.context = context;
         }
         public IQueryable<T> GetAll()
         {
-            return this.context.Set<T>();
+            return context.Set<T>();
         }
         public abstract T GetOne(int id);
 

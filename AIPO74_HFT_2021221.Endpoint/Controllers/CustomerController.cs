@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-;
 
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {

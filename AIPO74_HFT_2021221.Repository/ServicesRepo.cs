@@ -12,7 +12,7 @@ namespace AIPO74_HFT_2021221.Repository
     public class ServicesRepo : Repository<Services>, IServices
     {
 
-        public ServicesRepo(DbContext dbcontext) : base(dbcontext)
+        public ServicesRepo(CepheusDbContext dbcontext) : base(dbcontext)
         {
 
         }

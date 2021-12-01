@@ -28,7 +28,7 @@ namespace AIPO74_HFT_2021221.Client
             {
                 client.GetAsync("").GetAwaiter().GetResult();
             }
-            catch (HttpRequestException)
+            catch (HttpRequestException)    
             {
                 throw new ArgumentException("Endpoint is not available!");
             }

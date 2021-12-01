@@ -32,10 +32,12 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         [Range(1, 10)]
         public int Dangerous { get; set; }
+        [NotMapped]
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }
         public override string ToString()
         {
-            return $" ID: {this.ServiceId} Name: {this.Name} Price: {this.Price} Development Time: {this.DevelopmentTime}";
+            return $" ID: {ServiceId} Name: {Name} Price: {Price} Development Time: {DevelopmentTime} Dangerous: {Dangerous}";
         }
 
 

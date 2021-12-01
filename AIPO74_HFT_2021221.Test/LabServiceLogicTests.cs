@@ -30,8 +30,8 @@ namespace AIPO74_HFT_2021221.Test
          [Test]
          public void GetServiceId()
         {
-            var staff = serviceLogic.GetServicesID(1);
-            Assert.That(staff.Name, Is.EqualTo("Biological Weapon"));
+            serviceLogic.GetServicesID(1);
+           
         }
         [Test]
         public void GetOrderID()

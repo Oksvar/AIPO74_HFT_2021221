@@ -1,4 +1,5 @@
-﻿using AIPO74_HFT_2021221.Models;
+﻿using AIPO74_HFT_2021221.Data;
+using AIPO74_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace AIPO74_HFT_2021221.Repository
 {
     public class LaboratoryStaffRepo : Repository<LaboratoryStaff>, ILaboratoryStaffRepo
     {
-        public LaboratoryStaffRepo(DbContext context) : base(context)
+        public LaboratoryStaffRepo(CepheusDbContext context) : base(context)
         {
 
         }
