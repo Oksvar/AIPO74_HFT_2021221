@@ -57,21 +57,6 @@ namespace AIPO74_HFT_2021221.Test
             Assert.That(() => CustomerLogic.CreateCustomer(customer), Throws.InvalidOperationException);
 
         }
-        //[Test]
-        //public void CreateServiceTest()
-        //{
-        //    Services services = new Services
-        //    {
-        //        Price = 80000,
-        //        Name = "Test Name",
-        //        Dangerous = "Dangerous Test",
-        //    };
-
-        //}
-
-        #endregion
-
-
 
         [Test]
         public void GetOneStaff()
@@ -81,15 +66,30 @@ namespace AIPO74_HFT_2021221.Test
         }
 
         [Test]
-        public void fifthTest()
+        public void CreateService()
         {
+            Services services = new Services
+            {
+                ServiceId = 1,
+                Name = "Test Service",
+                Price = 80000,
+                Dangerous = 9,
+                DevelopmentTime = 632
+            };
+            Assert.That(() => serviceLogic.CreateService(services), Throws.InvalidOperationException);
 
         }
-        [OneTimeSetUp]
-        public void MockLogic()
-        {
+        #endregion
 
-        }
+        #region non-crud
+
+        #endregion
+
+
+
+
+
+
 
         [SetUp]
         public void Setup()
@@ -226,9 +226,11 @@ namespace AIPO74_HFT_2021221.Test
             contextMock.Setup(mock => mock.Set<LaboratoryOrders>()).Returns(LaboratoryOrdersDbSetMock.Object);
 
             staffLogic = new LaboratoryStaffLogic(staffRepo);
-            //CustomerLogic = new CustomerLogic(LaboratoryOrdersRepository, LaboratoryStaffRepository, CustomerRepository);
-            //serviceLogic = new ServiceLogic(CustomerRepository, LaboratoryOrdersRepository);
-            //orderLogic = new LaboratoryOrderLogic(LaboratoryStaffRepository, CustomerRepository, LaboratoryOrdersRepository);
+            CustomerLogic = new CustomerLogic(customerRepo);
+            serviceLogic = new ServiceLogic(servicesRepo);
+            orderLogic = new LaboratoryOrderLogic(orderRepo);
         }
+
+       
     }
 }
