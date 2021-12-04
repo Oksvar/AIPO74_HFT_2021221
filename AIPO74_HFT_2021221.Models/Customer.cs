@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
     [Table("Customers")]
    public class Customer
-    {
+   {
         public Customer()
         {
             LaboratoryOrders = new HashSet<LaboratoryOrders>();
@@ -44,6 +45,8 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string SecrecyStamp { get; set; }
 
+        [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }
 
 

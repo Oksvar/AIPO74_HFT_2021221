@@ -10,11 +10,19 @@ using System.Threading.Tasks;
 using AIPO74_HFT_2021221.Data;
 using AIPO74_HFT_2021221.Logic;
 using AIPO74_HFT_2021221.Repository;
+using Microsoft.Extensions.Configuration;
 
 namespace AIPO74_HFT_2021221.Endpoint
 {
     public class Startup
     {
+
+        public IConfiguration Configuration { get; set; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -24,13 +32,12 @@ namespace AIPO74_HFT_2021221.Endpoint
             services.AddTransient<ILaboratoryStaff, LaboratoryStaffLogic>();
             services.AddTransient<ILaboratoryOrderLogic, LaboratoryOrderLogic>();
             services.AddTransient<ICustomerLogic, CustomerLogic>();
-
             services.AddTransient<IServices, ServicesRepo>();
             services.AddTransient<ILaboratoryOrderRepo, LaboratoryOrderRepo>();
             services.AddTransient<ILaboratoryStaffRepo, LaboratoryStaffRepo>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
 
-            services.AddDbContext<CepheusDbContext>();
+            services.AddDbContext<CepheusDbContext, CepheusDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

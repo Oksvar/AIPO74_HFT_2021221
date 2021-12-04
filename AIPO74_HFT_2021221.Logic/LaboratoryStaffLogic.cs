@@ -42,7 +42,7 @@ namespace AIPO74_HFT_2021221.Logic
             laboratoryStaff1.Remove(id);
         }
 
-        public IEnumerable<LaboratoryStaff> GetLaboratoryStaffs()
+        public IQueryable<LaboratoryStaff> GetLaboratoryStaffs()
         {
             return laboratoryStaff1.GetAll();
         }

@@ -9,7 +9,7 @@ namespace AIPO74_HFT_2021221.Logic
 {
    public interface ILaboratoryStaff
     {
-        IEnumerable<LaboratoryStaff> GetLaboratoryStaffs();
+        IQueryable<LaboratoryStaff> GetLaboratoryStaffs();
         LaboratoryStaff GetStaffID(int id);
 
         void CreateNewStaff(LaboratoryStaff laboratoryStaff);

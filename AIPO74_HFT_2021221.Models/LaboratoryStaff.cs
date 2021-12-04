@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AIPO74_HFT_2021221.Models
 {
-    [Table("LaboratoryStaff")]
+    [Table("Staff")]
     public class LaboratoryStaff
     {
         public LaboratoryStaff()
@@ -34,7 +35,8 @@ namespace AIPO74_HFT_2021221.Models
 
         [Required]
         public int YearExpirience { get; set; }
-
+        [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }
 
 

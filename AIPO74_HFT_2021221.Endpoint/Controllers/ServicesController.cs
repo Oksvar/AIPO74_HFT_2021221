@@ -18,7 +18,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             this.serviceLogic = serviceLogic;
         }
-        [HttpGet("{BYID}")]
+        [HttpGet("{id}")]
         public Services GeService(int id)
         {
             return serviceLogic.GetServicesID(id);
@@ -38,7 +38,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             serviceLogic.ChangeServiceName(services.ServiceId, services.Name);
         }
-        [HttpDelete("{BYID}")]
+        [HttpDelete("{id}")]
         public void DeleteService(int id)
         {
             serviceLogic.DeleteService(id);

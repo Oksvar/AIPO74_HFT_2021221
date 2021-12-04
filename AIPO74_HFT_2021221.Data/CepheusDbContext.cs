@@ -10,37 +10,35 @@ namespace AIPO74_HFT_2021221.Data
 {
     public class CepheusDbContext : DbContext
     { 
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<LaboratoryStaff> Staffs { get; set; }
-        public virtual DbSet<Services> Services { get; set; }
-        public virtual DbSet<LaboratoryOrders> Orders { get; set; }
+        public /*virtual*/ DbSet<Customer> Customers { get; set; }
+        public /*virtual*/ DbSet<LaboratoryStaff> Staffs { get; set; }
+        public /*virtual*/ DbSet<Services> Services { get; set; }
+        public /*virtual*/ DbSet<LaboratoryOrders> Orders { get; set; }
         public CepheusDbContext()
         {
             this.Database?.EnsureCreated();
         }
         public CepheusDbContext(DbContextOptions<CepheusDbContext> options) : base(options)
         {
-            this.Database?.EnsureCreated();
+            Database?.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder != null && !optionsBuilder.IsConfigured)
             {
-                string connstring = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|\Database1.mdf; Integrated security=True; MultipleActiveResultSets=True";
+                string connstring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\CepheusDatabase.mdf;Integrated Security=True";
                 optionsBuilder.UseLazyLoadingProxies().UseSqlServer(connstring);
             }
         }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LaboratoryOrders>()
-                .HasKey(br => new { br.ServiceId, br.StaffID, br.CustomerID });
             modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.Services).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.ServiceId);
             modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.LaboratoryStaff).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.StaffID);
             modelBuilder.Entity<LaboratoryOrders>().HasOne(c => c.Customers).WithMany(l => l.LaboratoryOrders).HasForeignKey(f => f.CustomerID);
-           
 
+            
 
 
             List<Services> servicesList = new List<Services>
@@ -83,9 +81,6 @@ namespace AIPO74_HFT_2021221.Data
                
             };
 
-
-  
-            
             modelBuilder.Entity<Customer>().HasData(customersList);
             modelBuilder.Entity<LaboratoryStaff>().HasData(laboratoryStaffsList);
             modelBuilder.Entity<Services>().HasData(servicesList);

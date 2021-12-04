@@ -18,7 +18,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             this.laboratoryOrderLogic = laboratoryOrderLogic;
         }
-        [HttpGet("BYID")]
+        [HttpGet("{id}")]
         public LaboratoryOrders GetOrder(int id)
         {
             return laboratoryOrderLogic.GetLaboratoryOrder(id);
@@ -38,7 +38,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             laboratoryOrderLogic.ChangeDate(laboratoryOrders.Id, laboratoryOrders.Date);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void DeleteOrder(int id)
         {
             laboratoryOrderLogic.DeleteOrder(id);

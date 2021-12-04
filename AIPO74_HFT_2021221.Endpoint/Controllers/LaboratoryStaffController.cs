@@ -12,34 +12,42 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
     [ApiController]
     public class LaboratoryStaffController : ControllerBase
     {
-        private readonly ILaboratoryStaff laboratoryStaff;
+        ILaboratoryStaff laboratoryStaff;
         public LaboratoryStaffController(ILaboratoryStaff laboratoryStaff)
         {
             this.laboratoryStaff = laboratoryStaff;
         }
-        [HttpGet("{BYID}")]
+        [HttpGet("{id}")]
         public LaboratoryStaff GetStaff(int id)
         {
             return laboratoryStaff.GetStaffID(id);
         }
+
+        [HttpGet]
         public IEnumerable<LaboratoryStaff> GetStaffs()
         {
             return laboratoryStaff.GetLaboratoryStaffs();
         }
+
         [HttpPost]
         public void CreateStaff([FromBody]LaboratoryStaff laboratoryStaff1)
         {
             laboratoryStaff.CreateNewStaff(laboratoryStaff1);
         }
+
         [HttpPut]
         public void UpdatePositionStaff([FromBody] LaboratoryStaff laboratory)
         {
             laboratoryStaff.ChangePosition(laboratory.StaffID, laboratory.Position);
         }
+
+        [HttpPut]
         public void UpdateAccessLevelStaff([FromBody] LaboratoryStaff laboratory)
         {
             laboratoryStaff.ChangeAccessLevel(laboratory.StaffID, laboratory.AccessLevel);
         }
+
+        [HttpDelete("{id}")]
         public void DeleteStaff(int id)
         {
             laboratoryStaff.DeleteStaff(id);
