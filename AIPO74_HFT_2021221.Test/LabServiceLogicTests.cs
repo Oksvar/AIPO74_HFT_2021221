@@ -146,78 +146,78 @@ namespace AIPO74_HFT_2021221.Test
             orderRepo = new LaboratoryOrderRepo(contextMock.Object);
             customerRepo = new CustomerRepo(contextMock.Object);
 
-            IQueryable<Services> queServices = servicesList.AsQueryable();
-            IQueryable<LaboratoryStaff> queLaboratoryStaff = laboratoryStaffsList.AsQueryable();
-            IQueryable<Customer> queCustomer = customersList.AsQueryable();
-            IQueryable<LaboratoryOrders> queLaboratoryOrders = laboratoryOrdersList.AsQueryable();
+            IQueryable<Services> ServicesQuery = servicesList.AsQueryable();
+            IQueryable<LaboratoryStaff> LaboratoryStaffQuery = laboratoryStaffsList.AsQueryable();
+            IQueryable<Customer> CustomerQuery = customersList.AsQueryable();
+            IQueryable<LaboratoryOrders> LaboratoryOrdersQuery = laboratoryOrdersList.AsQueryable();
 
 
             ServicesDbSetMock.As<IQueryable<Services>>()
                 .Setup(mock => mock.Provider)
-                .Returns(queServices.Provider);
+                .Returns(ServicesQuery.Provider);
 
             ServicesDbSetMock.As<IQueryable<Services>>()
                 .Setup(mock => mock.Expression)
-                .Returns(queServices.Expression);
+                .Returns(ServicesQuery.Expression);
 
             ServicesDbSetMock.As<IQueryable<Services>>()
                 .Setup(mock => mock.ElementType)
-                .Returns(queServices.ElementType);
+                .Returns(ServicesQuery.ElementType);
 
             ServicesDbSetMock.As<IQueryable<Services>>()
                 .Setup(mock => mock.GetEnumerator())
-                .Returns(queServices.GetEnumerator());
+                .Returns(ServicesQuery.GetEnumerator());
 
 
             LaboratoryStaffDbSetMock.As<IQueryable<LaboratoryStaff>>()
                 .Setup(mock => mock.Provider)
-                .Returns(queLaboratoryStaff.Provider);
+                .Returns(LaboratoryStaffQuery.Provider);
 
             LaboratoryStaffDbSetMock.As<IQueryable<LaboratoryStaff>>()
                 .Setup(mock => mock.Expression)
-                .Returns(queLaboratoryStaff.Expression);
+                .Returns(LaboratoryStaffQuery.Expression);
 
             LaboratoryStaffDbSetMock.As<IQueryable<LaboratoryStaff>>()
                 .Setup(mock => mock.ElementType)
-                .Returns(queLaboratoryStaff.ElementType);
+                .Returns(LaboratoryStaffQuery.ElementType);
 
             LaboratoryStaffDbSetMock.As<IQueryable<LaboratoryStaff>>()
                 .Setup(mock => mock.GetEnumerator())
-                .Returns(queLaboratoryStaff.GetEnumerator());
+                .Returns(LaboratoryStaffQuery.GetEnumerator());
 
 
             CustomerDbSetMock.As<IQueryable<Customer>>()
                 .Setup(mock => mock.Provider)
-                .Returns(queCustomer.Provider);
+                .Returns(CustomerQuery.Provider);
 
             CustomerDbSetMock.As<IQueryable<Customer>>()
                 .Setup(mock => mock.Expression)
-                .Returns(queCustomer.Expression);
+                .Returns(CustomerQuery.Expression);
 
             CustomerDbSetMock.As<IQueryable<Customer>>()
                 .Setup(mock => mock.ElementType)
-                .Returns(queCustomer.ElementType);
+                .Returns(CustomerQuery.ElementType);
 
             CustomerDbSetMock.As<IQueryable<Customer>>()
                 .Setup(mock => mock.GetEnumerator())
-                .Returns(queCustomer.GetEnumerator());
+                .Returns(CustomerQuery.GetEnumerator());
 
 
             LaboratoryOrdersDbSetMock.As<IQueryable<LaboratoryOrders>>()
                 .Setup(mock => mock.Provider)
-                .Returns(queLaboratoryOrders.Provider);
+                .Returns(LaboratoryOrdersQuery.Provider);
 
             LaboratoryOrdersDbSetMock.As<IQueryable<LaboratoryOrders>>()
                 .Setup(mock => mock.Expression)
-                .Returns(queLaboratoryOrders.Expression);
+                .Returns(LaboratoryOrdersQuery.Expression);
 
             LaboratoryOrdersDbSetMock.As<IQueryable<LaboratoryOrders>>()
                 .Setup(mock => mock.ElementType)
-                .Returns(queLaboratoryOrders.ElementType);
+                .Returns(LaboratoryOrdersQuery.ElementType);
 
             LaboratoryOrdersDbSetMock.As<IQueryable<LaboratoryOrders>>()
                 .Setup(mock => mock.GetEnumerator())
-                .Returns(queLaboratoryOrders.GetEnumerator());
+                .Returns(LaboratoryOrdersQuery.GetEnumerator());
 
 
             contextMock.Setup(mock => mock.Set<Services>()).Returns(ServicesDbSetMock.Object);
