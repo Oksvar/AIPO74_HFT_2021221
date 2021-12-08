@@ -72,11 +72,11 @@ namespace AIPO74_HFT_2021221.Data
 
             List<LaboratoryOrders> laboratoryOrdersList = new List<LaboratoryOrders> 
             {
-                new LaboratoryOrders { Id = 1, Date = new DateTime(2007, 06, 17), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[0].StaffID, ServiceId = servicesList[0].ServiceId },
-                new LaboratoryOrders { Id = 2, Date = new DateTime(2008, 04, 14), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[1].StaffID, ServiceId = servicesList[1].ServiceId },
-                new LaboratoryOrders { Id = 3, Date = new DateTime(2017, 06, 12), CustomerID = customersList[1].CustomerID, StaffID = laboratoryStaffsList[2].StaffID, ServiceId = servicesList[2].ServiceId },
-                new LaboratoryOrders { Id = 4, Date = new DateTime(2012, 06, 26), CustomerID = customersList[2].CustomerID, StaffID = laboratoryStaffsList[3].StaffID, ServiceId = servicesList[3].ServiceId },
-                new LaboratoryOrders { Id = 5, Date = new DateTime(2013, 07, 21), CustomerID = customersList[4].CustomerID, StaffID = laboratoryStaffsList[4].StaffID, ServiceId = servicesList[4].ServiceId },
+                new LaboratoryOrders { Id = 1, Date = new DateTime(2007, 06, 17), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[3].StaffID, ServiceId = servicesList[4].ServiceId },
+                new LaboratoryOrders { Id = 2, Date = new DateTime(2008, 04, 14), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[1].StaffID, ServiceId = servicesList[3].ServiceId },
+                new LaboratoryOrders { Id = 3, Date = new DateTime(2017, 06, 12), CustomerID = customersList[1].CustomerID, StaffID = laboratoryStaffsList[0].StaffID, ServiceId = servicesList[2].ServiceId },
+                new LaboratoryOrders { Id = 4, Date = new DateTime(2012, 06, 26), CustomerID = customersList[2].CustomerID, StaffID = laboratoryStaffsList[3].StaffID, ServiceId = servicesList[1].ServiceId },
+                new LaboratoryOrders { Id = 5, Date = new DateTime(2013, 07, 21), CustomerID = customersList[4].CustomerID, StaffID = laboratoryStaffsList[4].StaffID, ServiceId = servicesList[0].ServiceId },
                
                
             };
