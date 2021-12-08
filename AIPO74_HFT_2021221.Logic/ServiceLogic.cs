@@ -15,10 +15,18 @@ namespace AIPO74_HFT_2021221.Logic
         {
             servicesRepo = serviceRepo;
         }
+
+        public void ChangePrice(int id, int newPrice)
+        {
+            servicesRepo.ChangePrice(id, newPrice);
+        }
+
         public void ChangeServiceName(int id, string newServName)
         {
             servicesRepo.ChangeName(id, newServName);
         }
+
+
 
         public void CreateService(Services services)
         {

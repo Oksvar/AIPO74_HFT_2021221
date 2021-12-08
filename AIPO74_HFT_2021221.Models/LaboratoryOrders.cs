@@ -43,7 +43,7 @@ namespace AIPO74_HFT_2021221.Models
         public virtual Customer Customers { get; set; }
         public override string ToString()
         {
-            return $"ID: {Id} Date: {Date} Customer ID: {CustomerID} Personal ID: {StaffID} Service ID: {ServiceId}";
+            return $"ID: {Id} Date: {Date} Customer ID: {CustomerID} Staff ID: {StaffID} Service ID: {ServiceId}";
         }
 
     }

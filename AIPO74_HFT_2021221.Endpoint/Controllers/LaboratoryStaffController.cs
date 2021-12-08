@@ -41,7 +41,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
             laboratoryStaff.ChangePosition(laboratory.StaffID, laboratory.Position);
         }
 
-        [HttpPut]
+        [HttpPut("updateaccesslevel")]
         public void UpdateAccessLevelStaff([FromBody] LaboratoryStaff laboratory)
         {
             laboratoryStaff.ChangeAccessLevel(laboratory.StaffID, laboratory.AccessLevel);

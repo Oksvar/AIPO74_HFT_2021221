@@ -19,7 +19,7 @@ namespace AIPO74_HFT_2021221.Repository
 
         public void ChangeName(int id, string newName)
         {
-            Services services = GetOne(id);
+            var services = GetOne(id);
             services.Name = newName;
             context.SaveChanges();
             

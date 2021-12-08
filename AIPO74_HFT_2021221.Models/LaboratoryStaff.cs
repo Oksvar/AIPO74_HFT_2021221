@@ -29,12 +29,13 @@ namespace AIPO74_HFT_2021221.Models
         [Required]
         public string Position { get; set; }
 
-        [Range(1, 10)]
+        
         [Required]
         public string AccessLevel { get; set; }   
 
         [Required]
         public int YearExpirience { get; set; }
+
         [NotMapped]
         [JsonIgnore]
         public virtual ICollection<LaboratoryOrders> LaboratoryOrders { get; set; }

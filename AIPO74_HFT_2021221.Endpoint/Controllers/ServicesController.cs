@@ -33,6 +33,11 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             serviceLogic.CreateService(services);
         }
+        [HttpPut("updateprice")]
+        public void ChangePrice([FromBody] Services services)
+        {
+            serviceLogic.ChangePrice(services.ServiceId, services.Price);
+        }
         [HttpPut]
         public void UpdateService([FromBody] Services services)
         {

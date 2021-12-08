@@ -13,6 +13,8 @@ namespace AIPO74_HFT_2021221.Logic
 
         Services GetServicesID(int id);
 
+        void ChangePrice(int id, int newPrice);
+
         void CreateService(Services services);
 
         void ChangeServiceName(int id, string newServName);

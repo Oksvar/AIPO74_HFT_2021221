@@ -35,6 +35,7 @@ namespace AIPO74_HFT_2021221.Logic
             {
                 throw new InvalidOperationException("ERROR: Some fields are not filled");
             }
+            laboratoryStaff1.Add(laboratoryStaff);
         }
 
         public void DeleteStaff(int id)

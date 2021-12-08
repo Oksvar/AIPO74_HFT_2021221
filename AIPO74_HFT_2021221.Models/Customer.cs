@@ -52,7 +52,7 @@ namespace AIPO74_HFT_2021221.Models
 
         public override string ToString()
         {
-            return $"Custumer ID:{this.CustomerID} Name: {this.Name} Adress: {Address} Phone: {Phone} City: {City} Country: {Country} Secret Stamp: {this.SecrecyStamp}";
+            return $"Custumer ID: {this.CustomerID} Name: {this.Name} Adress: {Address} Phone: {Phone} City: {City} Country: {Country} Secret Stamp: {this.SecrecyStamp}";
         }
 
     }

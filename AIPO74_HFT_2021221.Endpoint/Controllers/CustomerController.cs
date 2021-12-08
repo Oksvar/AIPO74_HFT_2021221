@@ -33,6 +33,16 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             customerLogic.ChangeAddress(customer.CustomerID, customer.Address);
         }
+        [HttpPut("changephone")]
+        public void UpdatePhone([FromBody] Customer customer)
+        {
+            customerLogic.ChangePhone(customer.CustomerID, customer.Phone);
+        }
+        [HttpPut("changesecret")]
+        public void UpdateSercre ([FromBody] Customer customer)
+        {
+            customerLogic.ChangeSecrecyStamp(customer.CustomerID, customer.SecrecyStamp);
+        }
         [HttpPost]
         public void CreateCustomer([FromBody] Customer customer)
         {
