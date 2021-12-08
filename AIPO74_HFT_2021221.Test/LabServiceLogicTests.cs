@@ -94,14 +94,17 @@ namespace AIPO74_HFT_2021221.Test
         public void DangerousTest()
         {
             Assert.That(serviceLogic.getDangerous().Count() < 7, Is.True);
-        } 
+        }
+        [Test]
+        public void GetServiceByOrderTest()
+        {
+            Assert.That(serviceLogic
+                .serviceWithHighestPrices(1)
+                .Select(x => x.serviceName)
+                .Single(), Is.EqualTo("Biological Weapon"));
+        }
+
         #endregion
-
-
-
-
-
-
 
         [SetUp]
         public void Setup()

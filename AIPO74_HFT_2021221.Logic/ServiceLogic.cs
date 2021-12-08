@@ -50,6 +50,7 @@ namespace AIPO74_HFT_2021221.Logic
             servicesRepo.Remove(id);
         }
 
+        //non Crud  method checking dangerous
         public IEnumerable<DangerousList> getDangerous()
         {
                 IQueryable<Services> services = servicesRepo.GetAll();
@@ -81,6 +82,7 @@ namespace AIPO74_HFT_2021221.Logic
             return servicesRepo.GetOne(id);
         }
 
+        //non crud Show service data
         public IEnumerable<ServiceWithHighestPrice> serviceWithHighestPrices(int id)
         {
             IQueryable<Services> services = servicesRepo.GetAll();

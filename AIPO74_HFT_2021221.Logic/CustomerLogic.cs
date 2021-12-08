@@ -51,6 +51,7 @@ namespace AIPO74_HFT_2021221.Logic
         {
             customerRepo.Remove(id);
         }
+
         //non-crud 1
         public IEnumerable<GetCustomerByStaff> getCustomerByStaffs(int idOrder)
         {
