@@ -6,14 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using AIPO74_HFT_2021221.Repository;
 
+
 namespace AIPO74_HFT_2021221.Logic
 {
     public class CustomerLogic : ICustomerLogic
     {
-        private readonly ICustomerRepo customerRepo;
-        public CustomerLogic(ICustomerRepo customerRepo)
+        ICustomerRepo customerRepo;
+        ILaboratoryOrderRepo laboratoryOrderRepo;
+
+        public CustomerLogic(ICustomerRepo customerRepo, ILaboratoryOrderRepo laboratoryOrderRepo)
         {
             this.customerRepo = customerRepo;
+            this.laboratoryOrderRepo = laboratoryOrderRepo;
+
         }
         public void ChangeAddress(int id, string newAddress)
         {
@@ -34,7 +39,7 @@ namespace AIPO74_HFT_2021221.Logic
         {
             if (customerRepo.GetOne(customer.CustomerID) !=null)
             {
-                throw new InvalidOperationException("ERROR: This id alredy have in request ");
+                throw new InvalidOperationException("ERROR: This customer already in database ");
             }
             else if(customer.Name == null)
             {
@@ -46,6 +51,25 @@ namespace AIPO74_HFT_2021221.Logic
         {
             customerRepo.Remove(id);
         }
+        //non-crud 1
+        public IEnumerable<GetCustomerByStaff> getCustomerByStaffs(int idOrder)
+        {
+            IQueryable<Customer> customers = customerRepo.GetAll();
+            IQueryable<LaboratoryOrders> orders = laboratoryOrderRepo.GetAll();
+            var quer = from Custom in customers
+                       join order in orders on Custom.CustomerID 
+                       equals order.CustomerID
+                       where order.Id == idOrder
+                       select new GetCustomerByStaff
+                       {
+                          orderId = idOrder,
+                          CustomerFullName = Custom.Name
+                           
+                       };
+            return quer.ToList();
+        }
+
+        
 
         public Customer GetCustomerID(int id)
         {
@@ -57,10 +81,7 @@ namespace AIPO74_HFT_2021221.Logic
             return customerRepo.GetAll();
         }
 
-
-        public void NonCrude()
-        {
-
-        }
+     
+       
     }
 }

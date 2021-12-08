@@ -81,8 +81,20 @@ namespace AIPO74_HFT_2021221.Test
         }
         #endregion
 
-        #region non-crud
-
+        #region NON-CRUD
+        [Test]
+        public void GetCustomerByOrder()
+        {
+            Assert.That(CustomerLogic
+                .getCustomerByStaffs(1)
+                .Select(x => x.CustomerFullName)
+                .Single(), Is.EqualTo("Poll Woker"));
+        }
+        [Test]
+        public void DangerousTest()
+        {
+            Assert.That(serviceLogic.getDangerous().Count() < 7, Is.True);
+        } 
         #endregion
 
 
@@ -96,11 +108,11 @@ namespace AIPO74_HFT_2021221.Test
         {
             List<Services> servicesList = new List<Services>
             {
-                new Services {  ServiceId = 1, Name = "Biological Weapon", Price = 80000, Dangerous = 8, DevelopmentTime = 6 },
-                new Services { ServiceId = 2, Name = "New Bacteria", Price = 20000, Dangerous = 2, DevelopmentTime = 5 },
-                new Services { ServiceId = 3, Name = "Virus weapom", Price = 900000, Dangerous = 10, DevelopmentTime = 4 },
-                new Services { ServiceId = 4, Name = "A cure of Cancer", Price = 100000, Dangerous = 3, DevelopmentTime = 3 },
-                new Services { ServiceId = 5, Name = "Plasma Weapon", Price = 8000, Dangerous = 2, DevelopmentTime = 5 }
+                new Services {  ServiceId = 1, Name = "Biological Weapon", Price = 88954, Dangerous = 8, DevelopmentTime = 6 },
+                new Services { ServiceId = 2, Name = "New Bacteria", Price = 25100, Dangerous = 2, DevelopmentTime = 5 },
+                new Services { ServiceId = 3, Name = "Virus weapom", Price = 958000, Dangerous = 10, DevelopmentTime = 4 },
+                new Services { ServiceId = 4, Name = "A cure of Cancer", Price = 154660, Dangerous = 3, DevelopmentTime = 3 },
+                new Services { ServiceId = 5, Name = "Plasma Weapon", Price = 8800, Dangerous = 2, DevelopmentTime = 5 }
             };
 
 
@@ -126,10 +138,10 @@ namespace AIPO74_HFT_2021221.Test
             List<LaboratoryOrders> laboratoryOrdersList = new List<LaboratoryOrders>
             {
                 new LaboratoryOrders { Id = 1, Date = new DateTime(2007, 06, 17), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[0].StaffID, ServiceId = servicesList[0].ServiceId },
-                new LaboratoryOrders { Id = 2, Date = new DateTime(2008, 04, 14), CustomerID = customersList[0].CustomerID, StaffID = laboratoryStaffsList[1].StaffID, ServiceId = servicesList[1].ServiceId },
-                new LaboratoryOrders { Id = 3, Date = new DateTime(2017, 06, 12), CustomerID = customersList[1].CustomerID, StaffID = laboratoryStaffsList[2].StaffID, ServiceId = servicesList[2].ServiceId },
-                new LaboratoryOrders { Id = 4, Date = new DateTime(2012, 06, 26), CustomerID = customersList[2].CustomerID, StaffID = laboratoryStaffsList[3].StaffID, ServiceId = servicesList[3].ServiceId },
-                new LaboratoryOrders { Id = 5, Date = new DateTime(2013, 07, 21), CustomerID = customersList[4].CustomerID, StaffID = laboratoryStaffsList[4].StaffID, ServiceId = servicesList[4].ServiceId },
+                new LaboratoryOrders { Id = 2, Date = new DateTime(2008, 04, 14), CustomerID = customersList[1].CustomerID, StaffID = laboratoryStaffsList[1].StaffID, ServiceId = servicesList[1].ServiceId },
+                new LaboratoryOrders { Id = 3, Date = new DateTime(2017, 06, 12), CustomerID = customersList[2].CustomerID, StaffID = laboratoryStaffsList[2].StaffID, ServiceId = servicesList[2].ServiceId },
+                new LaboratoryOrders { Id = 4, Date = new DateTime(2012, 06, 26), CustomerID = customersList[3].CustomerID, StaffID = laboratoryStaffsList[3].StaffID, ServiceId = servicesList[3].ServiceId },
+                new LaboratoryOrders { Id = 5, Date = new DateTime(2013, 07, 21), CustomerID = customersList[4].CustomerID, StaffID = laboratoryStaffsList[4].StaffID, ServiceId = servicesList[4].ServiceId }
 
 
             };
@@ -226,9 +238,9 @@ namespace AIPO74_HFT_2021221.Test
             contextMock.Setup(mock => mock.Set<LaboratoryOrders>()).Returns(LaboratoryOrdersDbSetMock.Object);
 
             staffLogic = new LaboratoryStaffLogic(staffRepo);
-            CustomerLogic = new CustomerLogic(customerRepo);
-            serviceLogic = new ServiceLogic(servicesRepo);
-            orderLogic = new LaboratoryOrderLogic(orderRepo);
+            CustomerLogic = new CustomerLogic(customerRepo, orderRepo);
+            serviceLogic = new ServiceLogic(servicesRepo, orderRepo, customerRepo);
+            orderLogic = new LaboratoryOrderLogic(orderRepo, staffRepo, servicesRepo, customerRepo);
         }
 
        

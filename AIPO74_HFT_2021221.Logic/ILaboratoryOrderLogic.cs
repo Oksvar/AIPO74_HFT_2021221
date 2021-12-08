@@ -16,6 +16,7 @@ namespace AIPO74_HFT_2021221.Logic
         void ChangeDate(int id, DateTime date);
         void DeleteOrder(int id);
 
+        IEnumerable <AlIinformationAboutOrder> GetAllInfoaboutOrder(int id);
         
     }
 }

@@ -43,6 +43,11 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             serviceLogic.ChangeServiceName(services.ServiceId, services.Name);
         }
+        [HttpGet("getservices/{id}")]
+        public IEnumerable<ServiceWithHighestPrice> getCustomerByStaffs(int id)
+        {
+            return serviceLogic.serviceWithHighestPrices(id);
+        }
         [HttpDelete("{id}")]
         public void DeleteService(int id)
         {

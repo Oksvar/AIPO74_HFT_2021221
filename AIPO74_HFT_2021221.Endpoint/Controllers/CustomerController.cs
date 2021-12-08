@@ -12,7 +12,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        /*private readonly*/ ICustomerLogic customerLogic;
+        ICustomerLogic customerLogic;
 
         public CustomerController(ICustomerLogic customerLogic)
         {
@@ -53,7 +53,12 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             customerLogic.DeleteCustomer(id);
         }
-
+        [HttpGet("getcustomerbyorder/{id}")]
+        public IEnumerable<GetCustomerByStaff> getCustomerByStaffs(int id)
+        {
+            return customerLogic.getCustomerByStaffs(id);
+        }
+      
      
     }
 }

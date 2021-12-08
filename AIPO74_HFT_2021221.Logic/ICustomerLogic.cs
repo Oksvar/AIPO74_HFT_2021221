@@ -7,7 +7,7 @@ using AIPO74_HFT_2021221.Models;
 
 namespace AIPO74_HFT_2021221.Logic
 {
-   public interface ICustomerLogic
+    public interface ICustomerLogic
     {
         void ChangeAddress(int id, string newAddress);
 
@@ -20,5 +20,6 @@ namespace AIPO74_HFT_2021221.Logic
 
         void CreateCustomer(Customer customer);
         void DeleteCustomer(int id);
-    }
+        IEnumerable<GetCustomerByStaff> getCustomerByStaffs(int idorder);
+    }  
 }

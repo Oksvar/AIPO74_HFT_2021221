@@ -20,5 +20,9 @@ namespace AIPO74_HFT_2021221.Logic
         void ChangeServiceName(int id, string newServName);
 
         void DeleteService(int id);
+
+        IEnumerable<DangerousList> getDangerous();
+
+        IEnumerable<ServiceWithHighestPrice> serviceWithHighestPrices(int id);
     }
 }

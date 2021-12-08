@@ -38,6 +38,11 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             laboratoryOrderLogic.ChangeDate(laboratoryOrders.Id, laboratoryOrders.Date);
         }
+        [HttpGet("allinfoorder/{id}")]
+        public IEnumerable<AlIinformationAboutOrder> GetAllinformationAboutOrder(int id)
+        {
+            return laboratoryOrderLogic.GetAllInfoaboutOrder(id);
+        }
         [HttpDelete("{id}")]
         public void DeleteOrder(int id)
         {

@@ -11,9 +11,13 @@ namespace AIPO74_HFT_2021221.Logic
     public class ServiceLogic : IServiceLogic
     {
         IServices servicesRepo;
-        public ServiceLogic(IServices serviceRepo)
+        ILaboratoryOrderRepo laboratoryOrderRepo;
+        ICustomerRepo customerRepo;
+        public ServiceLogic(IServices serviceRepo, ILaboratoryOrderRepo orderRepo, ICustomerRepo customerRepo)
         {
-            servicesRepo = serviceRepo;
+          this.servicesRepo = serviceRepo;
+            this.laboratoryOrderRepo = orderRepo;
+            this.customerRepo = customerRepo;
         }
 
         public void ChangePrice(int id, int newPrice)
@@ -46,6 +50,27 @@ namespace AIPO74_HFT_2021221.Logic
             servicesRepo.Remove(id);
         }
 
+        public IEnumerable<DangerousList> getDangerous()
+        {
+                IQueryable<Services> services = servicesRepo.GetAll();
+                IQueryable<LaboratoryOrders> Orders = laboratoryOrderRepo.GetAll();
+            IQueryable<Customer> customers = customerRepo.GetAll();
+                var quer = from serv in services
+                           join order in Orders on serv.ServiceId equals order.ServiceId
+                           join cust in customers on order.CustomerID equals cust.CustomerID
+                       where serv.Dangerous > 7 
+                           select new DangerousList
+                           {
+                                CustomerName = cust.Name,
+                                CustomerID = cust.CustomerID
+                               
+
+
+                           };
+                return quer.ToList();
+        }
+        
+
         public IEnumerable<Services> GetServices()
         {
             return servicesRepo.GetAll();
@@ -54,6 +79,24 @@ namespace AIPO74_HFT_2021221.Logic
         public Services GetServicesID(int id)
         {
             return servicesRepo.GetOne(id);
+        }
+
+        public IEnumerable<ServiceWithHighestPrice> serviceWithHighestPrices(int id)
+        {
+            IQueryable<Services> services = servicesRepo.GetAll();
+            IQueryable<LaboratoryOrders> orders = laboratoryOrderRepo.GetAll();
+            var quer = from Custom in services
+                       join order in orders on Custom.ServiceId
+                       equals order.ServiceId
+                       where order.Id == id
+                       select new ServiceWithHighestPrice
+                       {
+                           serviceID = Custom.ServiceId,
+                           serviceName = Custom.Name,
+                           price = Custom.Price
+
+                       };
+            return quer.ToList();
         }
     }
 }

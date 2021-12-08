@@ -80,11 +80,15 @@ namespace AIPO74_HFT_2021221.Client
                .Configure(config =>
                {
                    config.Selector = "--> ";
+                   config.Title = "Cruds menu";
                    config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
                });
 
             var noncrud = new ConsoleMenu()
-                .Add("Non-crud1", () => service.Show())
+                .Add("1.Get Customer by order ID", () => GetCustomerByID(rest))
+                .Add("2.Get All information about order", () => GetAllInfoOrder(rest))
+                .Add("3.Get service information by order", () => GetServiceByOrderID(rest))
+                .Add("Go back to previous menu", ConsoleMenu.Close)
                 .Configure(config =>
                 {
                     config.Selector = "-->";
@@ -95,7 +99,6 @@ namespace AIPO74_HFT_2021221.Client
                  .Add("CRUD METHODS", () => crud.Show())
                  .Add("NON-CRUD METHODS", () => noncrud.Show())
                  .Add("Exit from the application", ConsoleMenu.Close)
-                 //.Add("NON-CRUD METHODS", ()=> crud.Show())
                  .Configure(config =>
                  {
                      config.Selector = "--> ";
@@ -103,13 +106,49 @@ namespace AIPO74_HFT_2021221.Client
                      config.EnableFilter = true;
                      config.Title = "Main menu";
                      config.EnableWriteTitle = true;
-                     config.EnableBreadcrumb = true;
                  });
             menu.Show();
             #endregion
+
             /////////////////////////////////////////////////////////////////
         }
 
+        #region NonCrud
+        private static void GetCustomerByID(RestService rest)
+        {
+            Console.WriteLine("Here is order list:");
+            GetOrders(rest);
+            Console.WriteLine("Pick Order ID");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Result:");
+            var cust = rest.Get<GetCustomerByStaff>("Customer", "getcustomerbyorder", id);
+            cust.ForEach(x => Console.WriteLine(x.ToString()));
+            Console.ReadLine();
+        }
+        private static void GetAllInfoOrder(RestService rest)
+        {
+            Console.WriteLine("Here is order list:");
+            GetOrders(rest);
+            Console.WriteLine("Pick Order ID");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Result:");
+            var cust = rest.Get<AlIinformationAboutOrder>("LaboratoryOrder", "allinfoorder", id);
+            cust.ForEach(x => Console.WriteLine(x.ToString()));
+            Console.ReadLine();
+        }
+        private static void GetServiceByOrderID(RestService rest)
+        {
+            Console.WriteLine("Here is order list:");
+            GetOrders(rest);
+            Console.WriteLine("Pick one Order ID");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Result:");
+            var cust = rest.Get<ServiceWithHighestPrice>("Services", "getservices", id);
+            cust.ForEach(x => Console.WriteLine(x.ToString()));
+            Console.ReadLine();
+        }
+
+        #endregion
         #region ServiceCrud
         private static void CreateService(RestService rest)
         {
@@ -141,7 +180,7 @@ namespace AIPO74_HFT_2021221.Client
                 Console.WriteLine(".....List all services.....");
                 var serv = rest.Get<Services>("Services");
                 serv.ForEach(x => Console.WriteLine(x.ToString()));
-                Console.WriteLine("\n Press enter to search");
+                Console.WriteLine("\n Press enter to continue");
                 Console.ReadLine();
             }
             catch (Exception e)
@@ -405,7 +444,7 @@ namespace AIPO74_HFT_2021221.Client
             }
         }
         #endregion
-        #region Orders
+        #region OrdersCrud
         private static void GetOrder(RestService rest)
         {
             Console.WriteLine("Plese enter an id");
