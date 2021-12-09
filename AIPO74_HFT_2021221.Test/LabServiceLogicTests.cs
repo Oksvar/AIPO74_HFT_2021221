@@ -40,6 +40,7 @@ namespace AIPO74_HFT_2021221.Test
             Assert.That(orderLogic.GetLaboratoryOrders().Count() > 0, Is.True);
 
         }
+        
         [Test]
         public void CreateCustomer()
         {
@@ -56,6 +57,19 @@ namespace AIPO74_HFT_2021221.Test
             };
             Assert.That(() => CustomerLogic.CreateCustomer(customer), Throws.InvalidOperationException);
 
+        }
+        [Test]
+        public void CreateStaff()
+        {
+            LaboratoryStaff staff = new LaboratoryStaff
+            {
+                StaffID = 1,
+                FullName = "Test name",
+                AccessLevel = "Test access",
+                Position = "Test",
+                YearExpirience = 8
+            };
+            Assert.That(() => staffLogic.CreateNewStaff(staff), Throws.InvalidOperationException);
         }
 
         [Test]
@@ -78,6 +92,12 @@ namespace AIPO74_HFT_2021221.Test
             };
             Assert.That(() => serviceLogic.CreateService(services), Throws.InvalidOperationException);
 
+        }
+        [Test]
+        public void GetCostemers()
+        {
+            var ord = CustomerLogic.GetCustomers();
+            Assert.That(CustomerLogic.GetCustomers().Count() > 0, Is.True);
         }
         #endregion
 
@@ -103,6 +123,12 @@ namespace AIPO74_HFT_2021221.Test
                 .Select(x => x.serviceName)
                 .Single(), Is.EqualTo("Biological Weapon"));
         }
+        [Test]
+        public void AVGPrice()
+        {
+            var result = serviceLogic.AVGPrice();
+            Assert.That(result, Is.EqualTo(203600));
+        }
 
         #endregion
 
@@ -111,11 +137,11 @@ namespace AIPO74_HFT_2021221.Test
         {
             List<Services> servicesList = new List<Services>
             {
-                new Services {  ServiceId = 1, Name = "Biological Weapon", Price = 88954, Dangerous = 8, DevelopmentTime = 6 },
-                new Services { ServiceId = 2, Name = "New Bacteria", Price = 25100, Dangerous = 2, DevelopmentTime = 5 },
-                new Services { ServiceId = 3, Name = "Virus weapom", Price = 958000, Dangerous = 10, DevelopmentTime = 4 },
-                new Services { ServiceId = 4, Name = "A cure of Cancer", Price = 154660, Dangerous = 3, DevelopmentTime = 3 },
-                new Services { ServiceId = 5, Name = "Plasma Weapon", Price = 8800, Dangerous = 2, DevelopmentTime = 5 }
+                new Services {  ServiceId = 1, Name = "Biological Weapon", Price = 80000, Dangerous = 8, DevelopmentTime = 6 },
+                new Services { ServiceId = 2, Name = "New Bacteria", Price = 20000, Dangerous = 2, DevelopmentTime = 5 },
+                new Services { ServiceId = 3, Name = "Virus weapom", Price = 900000, Dangerous = 10, DevelopmentTime = 4 },
+                new Services { ServiceId = 4, Name = "A cure of Cancer", Price = 10000, Dangerous = 3, DevelopmentTime = 3 },
+                new Services { ServiceId = 5, Name = "Plasma Weapon", Price = 8000, Dangerous = 2, DevelopmentTime = 5 }
             };
 
 

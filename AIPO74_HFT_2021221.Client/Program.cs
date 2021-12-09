@@ -147,6 +147,7 @@ namespace AIPO74_HFT_2021221.Client
             cust.ForEach(x => Console.WriteLine(x.ToString()));
             Console.ReadLine();
         }
+        
 
         #endregion
         #region ServiceCrud

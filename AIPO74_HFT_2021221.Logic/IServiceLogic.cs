@@ -21,6 +21,8 @@ namespace AIPO74_HFT_2021221.Logic
 
         void DeleteService(int id);
 
+        double AVGPrice();
+
         IEnumerable<DangerousList> getDangerous();
 
         IEnumerable<ServiceWithHighestPrice> serviceWithHighestPrices(int id);

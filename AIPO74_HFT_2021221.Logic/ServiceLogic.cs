@@ -99,6 +99,13 @@ namespace AIPO74_HFT_2021221.Logic
 
                        };
             return quer.ToList();
+
+            
+
+        }
+        public double AVGPrice()
+        {
+            return servicesRepo.GetAll().Average(t => t.Price);
         }
     }
 }

@@ -82,7 +82,5 @@ namespace AIPO74_HFT_2021221.Logic
             return customerRepo.GetAll();
         }
 
-     
-       
     }
 }
