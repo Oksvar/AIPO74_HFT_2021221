@@ -88,6 +88,7 @@ namespace AIPO74_HFT_2021221.Client
                 .Add("1.Get Customer by order ID", () => GetCustomerByID(rest))
                 .Add("2.Get All information about order", () => GetAllInfoOrder(rest))
                 .Add("3.Get service information by order", () => GetServiceByOrderID(rest))
+                .Add("4.Average price", () => GetAvgPrice(rest))
                 .Add("Go back to previous menu", ConsoleMenu.Close)
                 .Configure(config =>
                 {
@@ -147,7 +148,20 @@ namespace AIPO74_HFT_2021221.Client
             cust.ForEach(x => Console.WriteLine(x.ToString()));
             Console.ReadLine();
         }
-        
+        private static void GetAvgPrice(RestService rest)
+        {
+            Console.WriteLine("The average price is:");
+            try
+            {
+                var avg = rest.Get<Services>("Services","AVGprice");
+                Console.WriteLine($"The average service price is: {avg}");
+            }
+            catch (Exception)
+            {
+
+            }
+            Console.ReadKey();
+        }
 
         #endregion
         #region ServiceCrud

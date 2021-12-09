@@ -127,5 +127,16 @@ namespace AIPO74_HFT_2021221.Client
             }
             return items;
         }
+
+        public T Get<T>(string endpoint, string noncrudmethod)
+        {
+            T item = default(T);
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + noncrudmethod.ToString()).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+            }
+            return item;
+        }
     }
 }
