@@ -23,6 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIPO74_HFT_2021221.Client",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIPO74_HFT_2021221.Models", "AIPO74_HFT_2021221.Models\AIPO74_HFT_2021221.Models.csproj", "{55FE1F94-123F-4BD8-B6D7-A33D80F95908}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{254555C8-105D-45FA-AB2E-C85FEBFDBE41}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
