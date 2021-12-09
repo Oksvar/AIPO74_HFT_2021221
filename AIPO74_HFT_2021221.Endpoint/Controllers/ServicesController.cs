@@ -49,7 +49,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
             return serviceLogic.serviceWithHighestPrices(id);
         }
         [HttpGet("AVGprice")]
-        public double AVGprice()
+        public Services AVGprice()
         {
             return serviceLogic.AVGPrice();
         }

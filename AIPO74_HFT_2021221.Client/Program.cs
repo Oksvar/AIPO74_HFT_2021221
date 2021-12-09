@@ -154,7 +154,7 @@ namespace AIPO74_HFT_2021221.Client
             try
             {
                 var avg = rest.Get<Services>("Services","AVGprice");
-                Console.WriteLine($"The average service price is: {avg}");
+                Console.WriteLine($"The average service price is: {avg.Price}");
             }
             catch (Exception)
             {

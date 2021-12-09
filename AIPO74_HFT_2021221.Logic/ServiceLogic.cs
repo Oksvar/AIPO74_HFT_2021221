@@ -103,9 +103,11 @@ namespace AIPO74_HFT_2021221.Logic
             
 
         }
-        public double AVGPrice()
+        public Services AVGPrice()
         {
-            return servicesRepo.GetAll().Average(t => t.Price);
+            Services services = new Services() 
+            { Price = Convert.ToInt32(servicesRepo.GetAll().Average(t => t.Price)) };
+            return services;
         }
     }
 }
