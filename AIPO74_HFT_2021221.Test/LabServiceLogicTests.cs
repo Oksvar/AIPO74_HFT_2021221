@@ -126,9 +126,10 @@ namespace AIPO74_HFT_2021221.Test
         [Test]
         public void AVGPrice()
         {
-            var result = serviceLogic.AVGPrice();
-            
+            var result = serviceLogic.AVGPrice().Price;
+            Assert.That(result, Is.EqualTo(203600));
         }
+
 
         #endregion
 
