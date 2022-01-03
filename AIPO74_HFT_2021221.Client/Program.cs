@@ -89,7 +89,7 @@ namespace AIPO74_HFT_2021221.Client
                 .Add("2.Get All information about order", () => GetAllInfoOrder(rest))
                 .Add("3.Get service information by order", () => GetServiceByOrderID(rest))
                 .Add("4.Average service price", () => GetAvgPrice(rest))
-                .Add("5. Dangerous", () => getDangerous(rest))
+                .Add("5. Serivces with dangerous more 7", () => getDangerous(rest))
                 .Add("Go back to previous menu", ConsoleMenu.Close)
                 .Configure(config =>
                 {
