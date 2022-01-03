@@ -55,18 +55,15 @@ namespace AIPO74_HFT_2021221.Logic
         {
                 IQueryable<Services> services = servicesRepo.GetAll();
                 IQueryable<LaboratoryOrders> Orders = laboratoryOrderRepo.GetAll();
-            IQueryable<Customer> customers = customerRepo.GetAll();
-                var quer = from serv in services
-                           join order in Orders on serv.ServiceId equals order.ServiceId
-                           join cust in customers on order.CustomerID equals cust.CustomerID
+                var quer = from order in Orders
+                           join serv in services on order.ServiceId equals serv.ServiceId
                        where serv.Dangerous > 7 
                            select new DangerousList
                            {
-                                CustomerName = cust.Name,
-                                CustomerID = cust.CustomerID
-                               
-
-
+                              orderID = order.Id,
+                              Dangerous = serv.Dangerous,
+                              ServiceName = serv.Name
+                          
                            };
                 return quer.ToList();
         }
@@ -103,6 +100,7 @@ namespace AIPO74_HFT_2021221.Logic
             
 
         }
+        //non-crud showing avarage price
         public Services AVGPrice()
         {
             Services services = new Services() 

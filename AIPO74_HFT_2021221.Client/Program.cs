@@ -89,6 +89,7 @@ namespace AIPO74_HFT_2021221.Client
                 .Add("2.Get All information about order", () => GetAllInfoOrder(rest))
                 .Add("3.Get service information by order", () => GetServiceByOrderID(rest))
                 .Add("4.Average service price", () => GetAvgPrice(rest))
+                .Add("5. Dangerous", () => getDangerous(rest))
                 .Add("Go back to previous menu", ConsoleMenu.Close)
                 .Configure(config =>
                 {
@@ -150,7 +151,6 @@ namespace AIPO74_HFT_2021221.Client
         }
         private static void GetAvgPrice(RestService rest)
         {
-            Console.WriteLine("The average price is:");
             try
             {
                 var avg = rest.Get<Services>("Services","AVGprice");
@@ -162,6 +162,23 @@ namespace AIPO74_HFT_2021221.Client
             }
             Console.ReadKey();
         }
+        private static void getDangerous(RestService rest)
+        {
+            try
+            {
+                var dan = rest.Get1<DangerousList>("Services", "getDangerous");
+                foreach (var item in dan)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            Console.ReadKey();
+        }
+       
 
         #endregion
         #region ServiceCrud

@@ -8,13 +8,13 @@ namespace AIPO74_HFT_2021221.Models
 {
     public class DangerousList
     {
-        public int CustomerID { get; set; }
-        public string CustomerName { get; set; }
+        public int Dangerous { get; set; }
+        public string ServiceName { get; set; }
         public int orderID { get; set; }
 
         public override string ToString()
         {
-            return  "Customer ID: "+ CustomerID;
+            return  " Dangerous: "+ Dangerous + " Order ID: "+ orderID + " Service name: " + ServiceName;
         }
     }
 }

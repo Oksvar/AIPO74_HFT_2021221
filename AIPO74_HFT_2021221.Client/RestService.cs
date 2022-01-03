@@ -127,6 +127,18 @@ namespace AIPO74_HFT_2021221.Client
             }
             return items;
         }
+        public List<T> Get1<T>(string endpoint, string noncruddangerous)
+        {
+            List<T> items = new List<T>();
+            string concatenatedPath = endpoint + "/" + noncruddangerous;
+            HttpResponseMessage response = client.GetAsync(concatenatedPath).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            return items;
+        }
 
         public T Get<T>(string endpoint, string noncrudmethod)
         {

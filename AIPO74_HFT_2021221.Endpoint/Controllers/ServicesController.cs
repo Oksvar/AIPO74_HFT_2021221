@@ -53,6 +53,11 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         {
             return serviceLogic.AVGPrice();
         }
+        [HttpGet("getDangerous")]
+        public IEnumerable<DangerousList> GetDangerous()
+        {
+            return serviceLogic.getDangerous();
+        }
         [HttpDelete("{id}")]
         public void DeleteService(int id)
         {
