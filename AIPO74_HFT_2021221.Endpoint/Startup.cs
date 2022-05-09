@@ -39,8 +39,8 @@ namespace AIPO74_HFT_2021221.Endpoint
             services.AddTransient<ILaboratoryOrderRepo, LaboratoryOrderRepo>();
             services.AddTransient<ILaboratoryStaffRepo, LaboratoryStaffRepo>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
-
-            services.AddDbContext<CepheusDbContext, CepheusDbContext>();
+          
+            services.AddTransient<CepheusDbContext, CepheusDbContext>();
 
             services.AddSignalR();
 
@@ -71,12 +71,12 @@ namespace AIPO74_HFT_2021221.Endpoint
                 var response = new { Msg = exception.Message };
                 await context.Response.WriteAsJsonAsync(response);
             }));
-
+            
             app.UseCors(x => x
             .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .WithOrigins("http://localhost:42144"));
+            .WithOrigins("http://localhost:25918"));
 
             app.UseRouting();
 

@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.SignalR;
+using AIPO74_HFT_2021221.Endpoint.Signal;
 
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {
@@ -13,10 +15,11 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
     public class CustomerController : ControllerBase
     {
         ICustomerLogic customerLogic;
-
-        public CustomerController(ICustomerLogic customerLogic)
+        IHubContext<SignalRHub> hub;
+        public CustomerController(ICustomerLogic customerLogic, IHubContext<SignalRHub> hub)
         {
             this.customerLogic = customerLogic;
+            this.hub = hub;
         }
         [HttpGet ("{id}")]
         public Customer GetCustomer(int id)
@@ -32,6 +35,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         public void UpdateCustomer([FromBody] Customer customer)
         {
             customerLogic.ChangeAddress(customer.CustomerID, customer.Address);
+            hub.Clients.All.SendAsync("Customer", customer);
         }
         [HttpPut("changephone")]
         public void UpdatePhone([FromBody] Customer customer)
@@ -47,11 +51,14 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         public void CreateCustomer([FromBody] Customer customer)
         {
             customerLogic.CreateCustomer(customer);
+            hub.Clients.All.SendAsync("CustomerCreated", customer);
         }
         [HttpDelete("{id}")]
         public void DeleteCustomer(int id)
         {
+            var customerToDelete = customerLogic.GetCustomerID(id);
             customerLogic.DeleteCustomer(id);
+            hub.Clients.All.SendAsync("CustomerDeleted", customerToDelete);
         }
         [HttpGet("getcustomerbyorder/{id}")]
         public IEnumerable<GetCustomerByStaff> getCustomerByStaffs(int id)

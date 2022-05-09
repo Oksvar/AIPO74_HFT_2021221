@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace AIPO74_HFT_2021221.Wpf
 {
-  public class RestService
+    public class RestService
     {
         HttpClient client;
 

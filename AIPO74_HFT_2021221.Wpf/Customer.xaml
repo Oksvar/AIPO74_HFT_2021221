@@ -4,30 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIPO74_HFT_2021221.Wpf"
+        xmlns:viewmodel="clr-namespace:AIPO74_HFT_2021221.Wpf.ViewModel"
         mc:Ignorable="d"
         Title="Customer" Height="550" Width="800">
+    <Window.DataContext>
+        <viewmodel:CustomerViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Actors}" SelectedItem="{Binding SelectedActor}">
+        <ListBox ItemsSource="{Binding CustomerModel}" SelectedItem="{Binding CurrentlySelectedCustomer}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="" />
+                    <Border BorderBrush="#e05682"  BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Name}" />
+                            <Label Grid.Column="1" Content="{Binding Phone}" />
+                            <Label Grid.Column="2" Content="{Binding Address}" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Name" Background="LightBlue" Padding="10" />
-            <TextBox Text="{Binding SelectedActor.Name}" Padding="10" Margin="0,0,0,30" />
+            <TextBox Text="{Binding CurrentlySelectedCustomer.Name}" Padding="10" Margin="0,0,0,30" />
             <Label Content="Phone" Background="LightBlue" Padding="10" />
-            <TextBox Text="{Binding SelectedActor.Price}" Padding="10" Margin="0,0,0,30" />
+            <TextBox Text="{Binding CurrentlySelectedCustomer.Phone}" Padding="10" Margin="0,0,0,30" />
             <Label Content="Address:" Background="LightBlue" Padding="10" />
-            <TextBox Text="{Binding SelectedActor.DevelopmentTime}" Padding="10" Margin="0,0,0,30" />
-            <Button Content="Create Customer" Command="{Binding CreateActorCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Customer" Command="{Binding DeleteActorCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Customer Address" Command="{Binding UpdateActorCommand}" Margin="10" Padding="10" />
+            <TextBox Text="{Binding CurrentlySelectedCustomer.Address}" Padding="10" Margin="0,0,0,30" />
+            <Button Content="Create Customer" Command="{Binding CreateCustomerButton}" Margin="10" Padding="10" />
+            <Button Content="Delete Customer" Command="{Binding DeleteCustomerButton}" Margin="10" Padding="10" />
+            <Button Content="Update Customer Address" Command="{Binding UpdateCustomerButton}" Margin="10" Padding="10" />
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>

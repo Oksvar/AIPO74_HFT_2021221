@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIPO74_HFT_2021221.Wpf"
+        xmlns:viewmodel="clr-namespace:AIPO74_HFT_2021221.Wpf.ViewModel"
         mc:Ignorable="d"
         Title="NonCrud" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:NonCrudWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -17,15 +21,11 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Content="Get Customer by Order" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190"></Button>
+            <Button Command="{Binding NC1Command}" Content="Get Customer by Order" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190"></Button>
             <Button Content="Get all information about order" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
             <Button Content="Get service information by order" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
-            <Button Content="Average service price" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
-            <Button Content="Service with dangerous with more7" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
-            <Button Content="Go back" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal" Click="ExitButtonNonCrud"></Button>
+            <Button Content="Go back" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal" Click="ExitButtonNonCrud"></Button>
         </Grid>
 
     </Grid>

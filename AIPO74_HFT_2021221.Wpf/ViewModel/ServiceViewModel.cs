@@ -21,7 +21,7 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
-       
+
         public RestCollection<Services> ServiceModel { get; set; }
 
         public ICommand CreateServiceButton { get; set; }
@@ -34,11 +34,12 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
             get { return currentlySeelctedService; }
             set
             {
-                
+
                 if (value != null)
                 {
                     currentlySeelctedService = new Services()
                     {
+                        ServiceId = value.ServiceId,
                         Name = value.Name,
                         Price = value.Price,
                         DevelopmentTime = value.DevelopmentTime,
@@ -61,7 +62,42 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
         }
         public ServiceViewModel()
         {
-                
+            if (!IsInDesignerMode)
+            {
+                ServiceModel = new RestCollection<Services>("http://localhost:5555/", "services", "hub");
+                CreateServiceButton = new RelayCommand(() =>
+                {
+                    ServiceModel.Add(new Services()
+                    {
+                        Name = currentlySeelctedService.Name,
+                        Price = currentlySeelctedService.Price,
+                        DevelopmentTime = currentlySeelctedService.DevelopmentTime,
+                        Dangerous = currentlySeelctedService.Dangerous
+                    });
+                });
+                UpdateServiceButton = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        ServiceModel.Update(currentlySeelctedService);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+
+                    }
+
+                });
+                DeleteServiceButton = new RelayCommand(() =>
+                {
+                    ServiceModel.Delete(CurrentlySeelctedService.ServiceId);
+                },
+                () =>
+                {
+                    return CurrentlySeelctedService != null;
+                });
+
+            }
         }
 
     }

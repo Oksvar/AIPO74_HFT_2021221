@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Map UI</title>
+    <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <h2>Labaratory Staff Catalog</h2>
+    <div id="formdiv">
+        <label>Name</label>
+        <input type="text" id="fullName">
+        <label>Position</label>
+        <input type="text" id="position">
+        <label>Access Level</label>
+        <input type="text" id="accessLevel">
+        <label>Year Expirience</label>
+        <input type="text" id="yearExpirience">
+        <button type="button" onclick="create()">Add staff</button>
+    </div>
+    <div id="updateformdiv">
+        <h2>Update</h2>
+        <label>Position change</label>
+        <input type="text" id="staffpositiontoupdate" />
+        <button type="button" onclick="update()">Rename position</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full name</th>
+                <th>Position</th>
+                <th>Access Level</th>
+                <th>Year Expirience</th>
+                <th>Navigate</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="LaboratoryOrderScript.js"></script>
+</body>
+</html>

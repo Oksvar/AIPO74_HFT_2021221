@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Map UI</title>
+    <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <h2>Customer Catalog</h2>
+    <div id="formdiv">
+        <label>Name</label>
+        <input type="text" id="name">
+        <label>Phone</label>
+        <input type="text" id="phone">
+        <label>Address</label>
+        <input type="text" id="address">
+        <button type="button" onclick="create()">Add Customer</button>
+    </div>
+    <div id="updateformdiv">
+        <h2>Update</h2>
+        <label>Change Address</label>
+        <input type="text" id="customeraddresstoupdate" />
+        <button type="button" onclick="update()">Change Address</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Navigate</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="CustomerScript.js"></script>
+</body>
+</html>
