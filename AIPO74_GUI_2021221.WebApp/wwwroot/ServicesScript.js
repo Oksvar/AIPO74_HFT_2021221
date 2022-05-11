@@ -70,7 +70,7 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
-//Create is not working
+
 function create() {
     let name = document.getElementById('name').value;
     let posi = document.getElementById('price').value;

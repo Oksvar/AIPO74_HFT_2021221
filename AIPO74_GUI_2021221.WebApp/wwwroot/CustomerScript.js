@@ -43,7 +43,7 @@ function display() {
     document.getElementById('resultarea').innerHTML = '';
     cust.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
-            "<tr><td>" + t.customerID + "</td><td>" + t.name + "</td><td>" + t.phone + "</td><td>" + t.address + "</td><td>" + `<button type="button" onclick="remove(${t.customerID})">Delete</button>` + `<button type="button" onclick="showupdate(${t.customerID})">Edit</button>` + "</td></tr>";
+            "<tr><td>" + t.customerID + "</td><td>" + t.name + "</td><td>" + t.address + "</td><td>" + t.phone + "</td><td>" + t.city + "</td><td>" + t.country + "</td><td>" + t.secrecyStamp + "</td><td>" + `<button type="button" onclick="remove(${t.customerID})">Delete</button>` + `<button type="button" onclick="showupdate(${t.customerID})">Edit</button>` + "</td></tr>";
         console.log(t.name)
     });
 }
@@ -61,7 +61,7 @@ function update() {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { customerID: custIdToUpdate, position: docer, })
+            { customerID: custIdToUpdate, address: docer })
     })
         .then(response => response)
         .then(data => {
@@ -70,16 +70,19 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
-//add is not working
+
 function create() {
     let ame = document.getElementById('name').value;
     let hone = document.getElementById('phone').value;
     let ddress = document.getElementById('address').value;
+    let cit = document.getElementById('city').value;
+    let counte = document.getElementById('country').value;
+    let secstamp = document.getElementById('secrecyStamp').value;
     fetch('http://localhost:5555/customer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { name: ame, phone: hone, address: ddress })
+            { name: ame, phone: hone, address: ddress, city: cit, country: counte, secrecyStamp: secstamp })
     })
         .then(response => response)
         .then(data => {

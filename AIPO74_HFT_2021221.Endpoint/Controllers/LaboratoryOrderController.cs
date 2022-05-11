@@ -11,7 +11,7 @@ using AIPO74_HFT_2021221.Endpoint.Signal;
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
+   // [ApiController]
     public class LaboratoryOrderController : ControllerBase
     {
 

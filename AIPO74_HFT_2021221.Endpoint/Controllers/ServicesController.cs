@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.SignalR;
 namespace AIPO74_HFT_2021221.Endpoint.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
+   // [ApiController]
     public class ServicesController : ControllerBase
     {
         IServiceLogic serviceLogic;

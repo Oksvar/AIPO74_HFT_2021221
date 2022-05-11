@@ -24,8 +24,7 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Content="{Binding Services}" />
-                            <Label Grid.Column="1" Content="{Binding CustomerID}" />
+                            <Label Grid.Column="1" Content="{Binding Id}" />
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -33,10 +32,8 @@
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Choose an order to see who's the customer." Background="Gainsboro" Padding="10" />
-            <Label Content="Service" Background="#e05682" Padding="10" />
-            <TextBox Text="{Binding SelectedLaboratoryOrder.Services}" Padding="10" Margin="0,0,0,0" />
-            <Label Content="Customer ID" Background="#e05682" Padding="10" />
-            <TextBox Text="{Binding SelectedLaboratoryOrder.CustomerID}" Padding="10" Margin="0,0,0,0" />
+            <Label Content="Order ID" Background="#e05682" Padding="10" />
+            <TextBox Text="{Binding SelectedLaboratoryOrder.Id}" Padding="10" Margin="0,0,0,0" />
             <Button Content="Run Query" Command="{Binding RunQuery}" Margin="10" Padding="10" />
             <ListBox ItemsSource="{Binding GetCustomerByStaff}" SelectedItem="{Binding SelectedGetCustomerByStaff.CustomerFullName}" Grid.Row="1">
                 <ListBox.ItemTemplate>

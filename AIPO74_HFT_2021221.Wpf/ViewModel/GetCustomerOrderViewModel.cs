@@ -48,13 +48,11 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
                 {
                     selectedLaboratoryOrder = new LaboratoryOrders()
                     {
+                        Id = value.Id,
                         Date = value.Date,
                         CustomerID = value.CustomerID,
                         StaffID = value.StaffID,
                         ServiceId = value.ServiceId,
-                        Services = value.Services,
-                        LaboratoryStaff = value.LaboratoryStaff,
-                        Customers = value.Customers
                     };
                     OnPropertyChanged();
                     (RunQuery as RelayCommand).NotifyCanExecuteChanged();
@@ -96,7 +94,7 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
             }
         }
 
-        public void GetCustomerByStaffQuery(int orderId)
+        public void GetCustomerByOrderQuery(int orderId)
         {
             string url = "customer/getcustomerbyorder/" + orderId;
             GetCustomerByStaff = new RestCollection<GetCustomerByStaff>("http://localhost:5555/", url, "hub");
@@ -109,7 +107,7 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
                 LaboratoryOrders = new RestCollection<LaboratoryOrders>("http://localhost:5555/", "laboratoryorder", "hub");
                 RunQuery = new RelayCommand(() =>
                 {
-                    GetCustomerByStaffQuery(SelectedLaboratoryOrder.Id);
+                    GetCustomerByOrderQuery(SelectedLaboratoryOrder.Id);
                 });
                 SelectedLaboratoryOrder = new LaboratoryOrders();
                 SelectedGetCustomerByStaff = new GetCustomerByStaff();

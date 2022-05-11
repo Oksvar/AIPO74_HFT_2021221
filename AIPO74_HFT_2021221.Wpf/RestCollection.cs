@@ -216,6 +216,7 @@ namespace AIPO74_HFT_2021221.Wpf
 
             if (!response.IsSuccessStatusCode)
             {
+                var sg = response.Content.ReadAsStringAsync();
                 var error = await response.Content.ReadAsAsync<RestExceptionInfo>();
                 throw new ArgumentException(error.Msg);
             }

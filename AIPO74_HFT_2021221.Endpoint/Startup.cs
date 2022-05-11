@@ -39,8 +39,8 @@ namespace AIPO74_HFT_2021221.Endpoint
             services.AddTransient<ILaboratoryOrderRepo, LaboratoryOrderRepo>();
             services.AddTransient<ILaboratoryStaffRepo, LaboratoryStaffRepo>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
-          
-            services.AddTransient<CepheusDbContext, CepheusDbContext>();
+
+            services.AddScoped<CepheusDbContext, CepheusDbContext>();
 
             services.AddSignalR();
 
