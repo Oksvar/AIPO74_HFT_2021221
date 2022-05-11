@@ -35,7 +35,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         public void CreateOrder([FromBody] LaboratoryOrders laboratoryOrders)
         {
             laboratoryOrderLogic.CreateNewOrder(laboratoryOrders);
-            hub.Clients.All.SendAsync("LaboratoryOrders", laboratoryOrders);
+            hub.Clients.All.SendAsync("LaboratoryOrdersCreated", laboratoryOrders);
         }
         [HttpPut]
         public void UpdateDate([FromBody] LaboratoryOrders laboratoryOrders)

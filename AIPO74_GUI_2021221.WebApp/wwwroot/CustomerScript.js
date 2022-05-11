@@ -20,7 +20,7 @@ function setupSignalR() {
     });
     connection.on("CustomerUpdated", (user, message) => {
         getdata();
-    })
+    });
 
     connection.onclose(async () => {
         await start();
@@ -53,7 +53,7 @@ function showupdate(id) {
     document.getElementById('updateformdiv').style.display = 'flex';
     custIdToUpdate = id;
 }
-
+//Is not working update
 function update() {
     document.getElementById('updateformdiv').style.display = 'none';
     let docer = document.getElementById('customeraddresstoupdate').value;
@@ -70,12 +70,12 @@ function update() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
-
+//add is not working
 function create() {
     let ame = document.getElementById('name').value;
     let hone = document.getElementById('phone').value;
     let ddress = document.getElementById('address').value;
-    fetch('http://localhost:5555/customer/', {
+    fetch('http://localhost:5555/customer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(

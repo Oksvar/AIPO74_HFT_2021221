@@ -35,7 +35,7 @@ namespace AIPO74_HFT_2021221.Endpoint.Controllers
         public void UpdateCustomer([FromBody] Customer customer)
         {
             customerLogic.ChangeAddress(customer.CustomerID, customer.Address);
-            hub.Clients.All.SendAsync("Customer", customer);
+            hub.Clients.All.SendAsync("CustomerUpdated", customer);
         }
         [HttpPut("changephone")]
         public void UpdatePhone([FromBody] Customer customer)

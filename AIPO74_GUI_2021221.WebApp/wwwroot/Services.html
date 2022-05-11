@@ -2,9 +2,44 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Map UI</title>
+    <link rel="stylesheet" href="Style.css" />
 </head>
 <body>
+    <h2>Services Catalog</h2>
+    <div id="formdiv">
+        <label>Name</label>
+        <input type="text" id="name">
+        <label>Price</label>
+        <input type="text" id="price">
+        <label>Development Time</label>
+        <input type="text" id="developmentTime">
+        <label>Dangerous</label>
+        <input type="text" id="dangerous">
+        <button type="button" onclick="create()">Add service</button>
+    </div>
+    <div id="updateformdiv">
+        <h2>Update</h2>
+        <label>Name change</label>
+        <input type="text" id="servicestoupdate" />
+        <button type="button" onclick="update()">Rename position</button>
+    </div>
 
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Developing time</th>
+                <th>Dangerous</th>
+                <th>Navigate</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="ServicesScript.js"></script>
 </body>
 </html>

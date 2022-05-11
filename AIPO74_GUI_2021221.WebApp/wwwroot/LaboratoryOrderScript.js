@@ -53,7 +53,7 @@ function showupdate(id) {
     document.getElementById('updateformdiv').style.display = 'flex';
     staffIdToUpdate = id;
 }
-
+//Update is not working
 function update() {
     document.getElementById('updateformdiv').style.display = 'none';
     let pos = document.getElementById('staffpositiontoupdate').value;
