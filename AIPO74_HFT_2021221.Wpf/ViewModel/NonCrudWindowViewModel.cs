@@ -27,7 +27,7 @@ namespace AIPO74_HFT_2021221.Wpf.ViewModel
         }
         private void InitializeNC2Window()
         {
-  //          new GetAllInformationOrder().Show();
+            new GetAllInformationOrder().Show();
         }
         private void InitializeNC3Window()
         {
