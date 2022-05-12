@@ -21,11 +21,15 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button Command="{Binding NC1Command}" Content="Get Customer by Order" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190"></Button>
             <Button Command="{Binding NC2Command}" Content="Get all information about order" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
-            <Button Content="Get service information by order" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
-            <Button Content="Go back" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal" Click="ExitButtonNonCrud"></Button>
+            <Button Command="{Binding NC3Command}" Content="Get service information by order" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
+            <Button Command="{Binding NC4Command}" Content="Serivces with dangerous more 7" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
+            <Button Command="{Binding NC5Command}" Content="Average price" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal"></Button>
+            <Button Content="Go back" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="190" FontWeight="Normal" FontStyle="Normal" Click="ExitButtonNonCrud"></Button>
         </Grid>
 
     </Grid>
