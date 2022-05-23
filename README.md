@@ -1,2 +1,3 @@
 # AIPO74_HFT_2021221
-Prog3 project
+This project is created for prpgraming homework
+
